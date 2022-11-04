@@ -184,7 +184,7 @@ MonoBehaviour:
   currentSpringPivotPoint: {fileID: 0}
   currentBall: {fileID: 0}
   ballPrefab: {fileID: 2604559633959517946, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
-  ballLifetime: 5
+  ballLifetime: 2
 --- !u!1 &8302837068829831352
 GameObject:
   m_ObjectHideFlags: 0

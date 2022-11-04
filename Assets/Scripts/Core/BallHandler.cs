@@ -9,6 +9,7 @@ public class BallHandler : MonoBehaviour
     [SerializeField] GameObject currentBall;
     [SerializeField] GameObject ballPrefab;
     [SerializeField] float ballLifetime = 5f;
+    
 
     bool isFlying = false;
     bool isBeingLaunched = false;
@@ -44,6 +45,7 @@ public class BallHandler : MonoBehaviour
         Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
         currentBall.transform.position = targetPosition;
+
         isBeingLaunched = true;
     }
 
