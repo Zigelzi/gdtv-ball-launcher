@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2604559633959517947}
   - component: {fileID: 2604559633959517945}
   - component: {fileID: 2604559633959517950}
-  - component: {fileID: 2604559633959517951}
+  - component: {fileID: 497008041179484}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Ball
@@ -122,7 +122,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!231 &2604559633959517951
+--- !u!231 &497008041179484
 SpringJoint2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +138,7 @@ SpringJoint2D:
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0, y: 0}
-  m_AutoConfigureDistance: 1
-  m_Distance: 4.9942064
+  m_AutoConfigureDistance: 0
+  m_Distance: 1
   m_DampingRatio: 0
-  m_Frequency: 200
+  m_Frequency: 0.6

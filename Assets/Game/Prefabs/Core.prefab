@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 39506727}
   m_Layer: 0
   m_Name: Pivot_Spring
-  m_TagString: Untagged
+  m_TagString: Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -181,6 +181,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254204c2408f04c4bb9f0d7622d94be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentSpringPivotPoint: {fileID: 0}
+  currentBall: {fileID: 0}
+  ballPrefab: {fileID: 2604559633959517946, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+  ballLifetime: 5
 --- !u!1 &8302837068829831352
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,6 +275,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1086170852676429938}
     m_Modifications:
+    - target: {fileID: 497008041179484, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+      propertyPath: m_ConnectedRigidBody
+      value: 
+      objectReference: {fileID: 39506728}
     - target: {fileID: 2604559633959517944, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -319,14 +327,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 2604559633959517951, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
-      propertyPath: m_Distance
-      value: 7.0447497
-      objectReference: {fileID: 0}
-    - target: {fileID: 2604559633959517951, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
-      propertyPath: m_ConnectedRigidBody
-      value: 
-      objectReference: {fileID: 39506728}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
 --- !u!4 &1086170853175105646 stripped

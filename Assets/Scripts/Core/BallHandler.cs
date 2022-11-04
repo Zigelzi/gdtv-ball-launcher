@@ -5,24 +5,93 @@ using UnityEngine.InputSystem;
 
 public class BallHandler : MonoBehaviour
 {
-    GameObject ball;
+    [SerializeField] GameObject currentSpringPivotPoint;
+    [SerializeField] GameObject currentBall;
+    [SerializeField] GameObject ballPrefab;
+    [SerializeField] float ballLifetime = 5f;
+
+    bool isFlying = false;
+    bool isBeingLaunched = false;
 
     void Awake()
     {
-        ball = GameObject.FindGameObjectWithTag("Ball");
+        currentBall = GameObject.FindGameObjectWithTag("Ball");
+        currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
     }
     void Update()
     {
         HandleTouchInput();
+
+        if (isBeingLaunched && IsInReleaseRange())
+        {
+            LaunchBall();
+        }
     }
 
     void HandleTouchInput()
     {
+        // Prevent player from moving the ball if it's already flying
+        if (isFlying) return;
+
         if (Touchscreen.current.primaryTouch.press.isPressed)
         {
-            Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-            Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-            ball.transform.position = targetPosition;
+            DragBall();
         }
+    }
+
+    void DragBall()
+    {
+        Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+        Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
+        currentBall.transform.position = targetPosition;
+        isBeingLaunched = true;
+    }
+
+    bool IsInReleaseRange()
+    {
+        SpringJoint2D ballSpringJoint = currentBall.GetComponent<SpringJoint2D>();
+        if (ballSpringJoint == null || currentSpringPivotPoint == null) return false;
+
+        float ballDistanceFromPivotPoint = Vector2.Distance(currentSpringPivotPoint.transform.position, currentBall.transform.position);
+        float releaseDistance = ballSpringJoint.distance;
+        
+
+        if (ballDistanceFromPivotPoint <= releaseDistance)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void LaunchBall()
+    {
+        SpringJoint2D ballSpringJoint = currentBall.GetComponent<SpringJoint2D>();
+        ballSpringJoint.enabled = false;
+        isBeingLaunched = false;
+        isFlying = true;
+        StartCoroutine(DestroyBallWhenLifetimeExpires());
+    }
+    IEnumerator DestroyBallWhenLifetimeExpires()
+    {
+        while (isFlying)
+        {
+            yield return new WaitForSeconds(ballLifetime);
+            Destroy(currentBall);
+            isFlying = false;
+        }
+        RespawnBall();
+    }
+
+    void RespawnBall()
+    {
+        if (ballPrefab == null) return;
+        currentBall = Instantiate(ballPrefab,
+            currentSpringPivotPoint.transform.position,
+            Quaternion.identity,
+            transform.parent);
+
+        SpringJoint2D newBallSpringJoint = currentBall.GetComponent<SpringJoint2D>();
+        newBallSpringJoint.connectedBody = currentSpringPivotPoint.GetComponent<Rigidbody2D>();
     }
 }
