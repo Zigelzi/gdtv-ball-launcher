@@ -9,6 +9,7 @@ public class BallHandler : MonoBehaviour
     [SerializeField] GameObject currentBall;
     [SerializeField] GameObject ballPrefab;
     [SerializeField] float ballLifetime = 5f;
+    [SerializeField] float ballReleaseRange = .5f;
     
 
     bool isFlying = false;
@@ -38,14 +39,21 @@ public class BallHandler : MonoBehaviour
         {
             DragBall();
         }
+        else
+        {
+            currentBall.GetComponent<Rigidbody2D>().isKinematic = false;
+        }
     }
 
     void DragBall()
     {
+        Rigidbody2D ballRb = currentBall.GetComponent<Rigidbody2D>();
         Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
         currentBall.transform.position = targetPosition;
 
+        ballRb.isKinematic = true;
+        ballRb.velocity = new Vector2(0, 0);
         isBeingLaunched = true;
     }
 
@@ -55,10 +63,8 @@ public class BallHandler : MonoBehaviour
         if (ballSpringJoint == null || currentSpringPivotPoint == null) return false;
 
         float ballDistanceFromPivotPoint = Vector2.Distance(currentSpringPivotPoint.transform.position, currentBall.transform.position);
-        float releaseDistance = ballSpringJoint.distance;
         
-
-        if (ballDistanceFromPivotPoint <= releaseDistance)
+        if (ballDistanceFromPivotPoint <= ballReleaseRange)
         {
             return true;
         }
