@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -7,7 +8,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] List<Transform> blocks = new List<Transform>();
     
-    public UnityEvent onTowerDestroyed;
+    public static event Action onTowerDestroyed;
 
     void Awake()
     {
@@ -20,6 +21,11 @@ public class Tower : MonoBehaviour
     void OnEnable()
     {
         Block.onBlockDestroyed += HandleBlockDestroyed;
+    }
+
+    void OnDisable()
+    {
+        Block.onBlockDestroyed -= HandleBlockDestroyed;
     }
 
     public void RemoveBlock(Transform block)

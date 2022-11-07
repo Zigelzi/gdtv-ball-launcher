@@ -20,6 +20,11 @@ public class BallHandler : MonoBehaviour
         currentBall = GameObject.FindGameObjectWithTag("Ball");
         currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
     }
+
+    void OnEnable()
+    {
+        Tower.onTowerDestroyed += HandleTowerDestroyed;
+    }
     void Update()
     {
         HandleTouchInput();
@@ -28,6 +33,11 @@ public class BallHandler : MonoBehaviour
         {
             LaunchBall();
         }
+    }
+
+    void OnDisable()
+    {
+        Tower.onTowerDestroyed -= HandleTowerDestroyed;
     }
 
     void HandleTouchInput()
@@ -101,5 +111,10 @@ public class BallHandler : MonoBehaviour
 
         SpringJoint2D newBallSpringJoint = currentBall.GetComponent<SpringJoint2D>();
         newBallSpringJoint.connectedBody = currentSpringPivotPoint.GetComponent<Rigidbody2D>();
+    }
+
+    void HandleTowerDestroyed()
+    {
+        enabled = false;
     }
 }
