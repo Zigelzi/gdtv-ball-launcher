@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Block : MonoBehaviour
 {
@@ -11,11 +13,14 @@ public class Block : MonoBehaviour
 
     Vector3 startingPosition = new Vector2();
 
+    public static event Action<Transform> onBlockDestroyed;
+
     void Awake()
     {
         blockRb = GetComponent<Rigidbody2D>();
         startingPosition = transform.position;
     }
+
 
     void Update()
     {
@@ -27,6 +32,7 @@ public class Block : MonoBehaviour
             )
         {
             transform.gameObject.SetActive(false);
+            onBlockDestroyed?.Invoke(transform);
         }
     }
 }
