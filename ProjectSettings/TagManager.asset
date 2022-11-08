@@ -4,8 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Ball
   - Pivot
+  - Emotion
   layers:
   - Default
   - TransparentFX
