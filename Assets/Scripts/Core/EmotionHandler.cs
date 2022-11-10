@@ -19,7 +19,6 @@ public class EmotionHandler : MonoBehaviour
     void Awake()
     {
         currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
-        Debug.Log("EmotionHandler awake");
     }
 
     void OnEnable()
