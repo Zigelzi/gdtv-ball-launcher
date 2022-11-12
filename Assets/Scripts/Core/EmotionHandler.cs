@@ -11,7 +11,8 @@ public class EmotionHandler : MonoBehaviour
     [SerializeField] GameObject selectedEmotion;
     [SerializeField] float emotionReleaseRange = .5f;
     [SerializeField] Vector2 dragLimit;
-    
+
+    EmotionStock emotionStock;
 
     bool isFlying = false;
     bool isBeingLaunched = false;
@@ -19,6 +20,7 @@ public class EmotionHandler : MonoBehaviour
     void Awake()
     {
         currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
+        emotionStock = GetComponent<EmotionStock>();
     }
 
     void OnEnable()
@@ -70,7 +72,6 @@ public class EmotionHandler : MonoBehaviour
         Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
-        Debug.Log(targetPosition);
         Vector2 clampedPosition = ClampDragPosition(targetPosition);
         currentEmotion.transform.position = clampedPosition;
 
@@ -120,6 +121,7 @@ public class EmotionHandler : MonoBehaviour
         isBeingLaunched = false;
         currentEmotion.DestroyEmotion();
         isFlying = true;
+        emotionStock.Consume();
     }
 
     void RespawnEmotion()
@@ -141,7 +143,10 @@ public class EmotionHandler : MonoBehaviour
 
     void HandleEmotionDestroyed()
     {
-        RespawnEmotion();
+        if (emotionStock.HasEmotionsRemaining())
+        {
+            RespawnEmotion();
+        }
     }
 
     void OnDrawGizmos()
