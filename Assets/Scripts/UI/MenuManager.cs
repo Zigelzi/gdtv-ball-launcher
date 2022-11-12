@@ -23,7 +23,6 @@ public class MenuManager : MonoBehaviour
     {
         int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
         SceneManager.LoadScene(currentLevelIndex);
-        Debug.Log("Button clicked");
     }
 
     public void Exit()

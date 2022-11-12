@@ -45,6 +45,7 @@ public class EmotionHandler : MonoBehaviour
     void OnDisable()
     {
         Tower.onTowerDestroyed -= HandleTowerDestroyed;
+        Emotion.onEmotionDestroy -= HandleEmotionDestroyed;
     }
 
     void HandleTouchInput()
@@ -99,6 +100,7 @@ public class EmotionHandler : MonoBehaviour
         emotionSpringJoint.enabled = false;
         isBeingLaunched = false;
         currentEmotion.DestroyEmotion();
+        isFlying = true;
     }
 
     void RespawnEmotion()
@@ -110,6 +112,7 @@ public class EmotionHandler : MonoBehaviour
 
         SpringJoint2D newEmotionSpringJoint = currentEmotion.GetComponent<SpringJoint2D>();
         newEmotionSpringJoint.connectedBody = currentSpringPivotPoint.GetComponent<Rigidbody2D>();
+        isFlying = false;
     }
 
     void HandleTowerDestroyed()
