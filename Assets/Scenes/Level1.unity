@@ -674,6 +674,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2053569411 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 39506726, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+  m_PrefabInstance: {fileID: 1086170852031160060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1086170852031160060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -681,6 +686,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 39506729, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -10.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 39506729, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.32
+      objectReference: {fileID: 0}
     - target: {fileID: 1086170852676429937, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: m_Name
       value: Core
@@ -749,6 +762,14 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 71.6
       objectReference: {fileID: 0}
+    - target: {fileID: 5510321329518970762, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5830600673199247062, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+      propertyPath: currentSpringPivotPoint
+      value: 
+      objectReference: {fileID: 2053569411}
     - target: {fileID: 6692169509632261733, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: far clip plane
       value: 30
@@ -787,7 +808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8891374128855757215, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 1e-45
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8891374128855757215, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: m_LocalRotation.y

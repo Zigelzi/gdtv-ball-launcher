@@ -322,8 +322,8 @@ MonoBehaviour:
   availableEmotions:
   - {fileID: 4005138946280227736, guid: fe6f109b56fc4324eaabbe83c1ce7081, type: 3}
   selectedEmotion: {fileID: 0}
-  emotionLifetime: 5
   emotionReleaseRange: 0.5
+  dragLimit: {x: 3, y: 3}
 --- !u!1 &2857301500426169796
 GameObject:
   m_ObjectHideFlags: 0

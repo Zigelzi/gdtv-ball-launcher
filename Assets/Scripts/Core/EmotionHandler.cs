@@ -9,8 +9,8 @@ public class EmotionHandler : MonoBehaviour
     [SerializeField] Emotion currentEmotion;
     [SerializeField] List<Emotion> availableEmotions = new List<Emotion>();
     [SerializeField] GameObject selectedEmotion;
-    [SerializeField] float emotionLifetime = 5f;
     [SerializeField] float emotionReleaseRange = .5f;
+    [SerializeField] Vector2 dragLimit;
     
 
     bool isFlying = false;
@@ -69,11 +69,30 @@ public class EmotionHandler : MonoBehaviour
         Rigidbody2D emotionRb = currentEmotion.GetComponent<Rigidbody2D>();
         Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
         Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-        currentEmotion.transform.position = targetPosition;
+
+        Debug.Log(targetPosition);
+        Vector2 clampedPosition = ClampDragPosition(targetPosition);
+        currentEmotion.transform.position = clampedPosition;
 
         emotionRb.isKinematic = true;
         emotionRb.velocity = new Vector2(0, 0);
         isBeingLaunched = true;
+    }
+
+    Vector2 ClampDragPosition(Vector2 currentDragPosition)
+    {
+        Vector2 currentSprintPivotPosition = currentSpringPivotPoint.transform.position;
+        float dragAreaXPositiveLimit = currentSprintPivotPosition.x + dragLimit.x;
+        float dragAreaXNegativeLimit = currentSprintPivotPosition.x - dragLimit.x;
+        float dragAreaYPositiveLimit = currentSprintPivotPosition.y + dragLimit.y;
+        float dragAreaYNegativeLimit = currentSprintPivotPosition.y - dragLimit.y;
+
+        float clampedDragXPosition = Mathf.Clamp(currentDragPosition.x, dragAreaXNegativeLimit, dragAreaXPositiveLimit);
+        float clampedDragYPosition = Mathf.Clamp(currentDragPosition.y, dragAreaYNegativeLimit, dragAreaYPositiveLimit);
+
+        Vector2 clampedPosition = new Vector2(clampedDragXPosition, clampedDragYPosition);
+
+        return clampedPosition;
     }
 
     bool IsInReleaseRange()
@@ -123,5 +142,12 @@ public class EmotionHandler : MonoBehaviour
     void HandleEmotionDestroyed()
     {
         RespawnEmotion();
+    }
+
+    void OnDrawGizmos()
+    {
+        if (currentSpringPivotPoint == null) return;
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireCube(currentSpringPivotPoint.transform.position, dragLimit*2);
     }
 }
