@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Pivot
   - Emotion
+  - UI_Victory
+  - UI_Defeat
   layers:
   - Default
   - TransparentFX

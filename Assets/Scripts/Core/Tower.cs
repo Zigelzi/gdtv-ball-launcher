@@ -38,13 +38,12 @@ public class Tower : MonoBehaviour
         blocks.Remove(block);
         if (blocks.Count == 0)
         {
-            onTowerDestroyed?.Invoke();
             DestroyTower();
         }
     }
 
     void DestroyTower()
     {
-        Debug.Log("Player won, tower destroyed!");
+        onTowerDestroyed?.Invoke();
     }
 }

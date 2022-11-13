@@ -8,8 +8,6 @@ public class EmotionStock : MonoBehaviour
     [SerializeField] int maxEmotions = 5;
     [SerializeField] int emotionsRemaining = -1;
 
-    public UnityEvent onEmotionsExhausted;
-
     void Awake()
     {
         emotionsRemaining = maxEmotions;

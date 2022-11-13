@@ -1,37 +1,39 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 public class MenuManager : MonoBehaviour
 {
-    Canvas menuCanvas;
+    [SerializeField] Canvas victoryCanvas;
+    [SerializeField] Canvas defeatedCanvas;
+    
     void Awake()
     {
-        menuCanvas = GetComponent<Canvas>();
-        menuCanvas.enabled = false;
+        victoryCanvas = GameObject.FindGameObjectWithTag("UI_Victory").GetComponent<Canvas>();
+        defeatedCanvas = GameObject.FindGameObjectWithTag("UI_Defeat").GetComponent<Canvas>();
+
+        victoryCanvas.enabled = false;
+        defeatedCanvas.enabled = false;
     }
     void OnEnable()
     {
         Tower.onTowerDestroyed += HandleTowerDestroyed;
+        EmotionHandler.onEmotionsExhausted += HandleEmotionsExhausted;
     }
 
     void OnDisable()
     {
         Tower.onTowerDestroyed -= HandleTowerDestroyed;
-    }
-    public void RestartLevel()
-    {
-        int currentLevelIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentLevelIndex);
-    }
-
-    public void Exit()
-    {
-        Application.Quit();
+        EmotionHandler.onEmotionsExhausted -= HandleEmotionsExhausted;
     }
 
     void HandleTowerDestroyed()
     {
-        menuCanvas.enabled = true;
+        victoryCanvas.enabled = true;
+    }
+
+    void HandleEmotionsExhausted()
+    {
+        defeatedCanvas.enabled = true;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -16,6 +17,8 @@ public class EmotionHandler : MonoBehaviour
 
     bool isFlying = false;
     bool isBeingLaunched = false;
+
+    public static Action onEmotionsExhausted;
 
     void Awake()
     {
@@ -146,6 +149,10 @@ public class EmotionHandler : MonoBehaviour
         if (emotionStock.HasEmotionsRemaining())
         {
             RespawnEmotion();
+        }
+        else
+        {
+            onEmotionsExhausted?.Invoke();
         }
     }
 
