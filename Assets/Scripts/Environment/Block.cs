@@ -4,10 +4,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using DD.Core;
+
 namespace DD.Environment
 {
 
-    public class Block : MonoBehaviour
+    public class Block : MonoBehaviour, IDemolishable
     {
         [SerializeField] float minimumDestroyDistance = .5f;
         [SerializeField] float distanceFromStart = 0f;
@@ -34,10 +36,14 @@ namespace DD.Environment
                 && Mathf.Abs(blockRb.rotation) >= destroyRotation
                 )
             {
-                transform.gameObject.SetActive(false);
-                onBlockDestroyed?.Invoke(transform);
+                Demolish();
             }
         }
-    }
 
+        public void Demolish()
+        {
+            transform.gameObject.SetActive(false);
+            onBlockDestroyed?.Invoke(transform);
+        }
+    }
 }

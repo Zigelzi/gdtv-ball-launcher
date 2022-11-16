@@ -5,14 +5,14 @@ using UnityEngine;
 
 namespace DD.Core
 {
-    public class Emotion : MonoBehaviour
+    public class Emotion : MonoBehaviour, IDemolishable
     {
         [SerializeField] float maxSpeed = 30f;
         [SerializeField] float lifetime = 2f;
 
         Rigidbody2D emotionRb;
 
-        public static event Action onEmotionDestroy;
+        public static event Action onEmotionDemolish;
         void Awake()
         {
             emotionRb = GetComponent<Rigidbody2D>();
@@ -23,7 +23,14 @@ namespace DD.Core
             LimitVelocity();
         }
 
-        public void DestroyEmotion()
+        public void Demolish()
+        {
+            StopCoroutine(DestroyAfterLifeTimeExpires());
+            Destroy(gameObject);
+            onEmotionDemolish?.Invoke();
+        }
+
+        public void StartLifetimeExpiry()
         {
             StartCoroutine(DestroyAfterLifeTimeExpires());
         }
@@ -31,8 +38,7 @@ namespace DD.Core
         IEnumerator DestroyAfterLifeTimeExpires()
         {
             yield return new WaitForSeconds(lifetime);
-            Destroy(gameObject);
-            onEmotionDestroy?.Invoke();
+            Demolish();
         }
 
         void LimitVelocity()

@@ -33,7 +33,7 @@ namespace DD.Core
         void OnEnable()
         {
             Tower.onTowerDestroyed += HandleTowerDestroyed;
-            Emotion.onEmotionDestroy += HandleEmotionDestroyed;
+            Emotion.onEmotionDemolish += HandleEmotionDestroyed;
         }
 
         void Start()
@@ -54,7 +54,7 @@ namespace DD.Core
         void OnDisable()
         {
             Tower.onTowerDestroyed -= HandleTowerDestroyed;
-            Emotion.onEmotionDestroy -= HandleEmotionDestroyed;
+            Emotion.onEmotionDemolish -= HandleEmotionDestroyed;
         }
 
         void HandleTouchInput()
@@ -126,7 +126,7 @@ namespace DD.Core
             SpringJoint2D emotionSpringJoint = currentEmotion.GetComponent<SpringJoint2D>();
             emotionSpringJoint.enabled = false;
             isBeingLaunched = false;
-            currentEmotion.DestroyEmotion();
+            currentEmotion.StartLifetimeExpiry();
             isFlying = true;
             emotionStock.Consume();
         }
