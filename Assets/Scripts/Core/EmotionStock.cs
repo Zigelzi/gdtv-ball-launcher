@@ -4,34 +4,37 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EmotionStock : MonoBehaviour
+namespace DD.Core
 {
-    [SerializeField] int maxEmotions = 5;
-    [SerializeField] int emotionsRemaining = -1;
-
-    public static Action onEmotionConsumed;
-
-    void Awake()
+    public class EmotionStock : MonoBehaviour
     {
-        emotionsRemaining = maxEmotions;
-    }
+        [SerializeField] int maxEmotions = 5;
+        [SerializeField] int emotionsRemaining = -1;
 
-    public void Consume()
-    {
-        if (emotionsRemaining > 0)
+        public static Action onEmotionConsumed;
+
+        void Awake()
         {
-            emotionsRemaining--;
-            onEmotionConsumed?.Invoke();
-        }
-    }
-
-    public bool HasEmotionsRemaining()
-    {
-        if (emotionsRemaining > 0)
-        {
-            return true;
+            emotionsRemaining = maxEmotions;
         }
 
-        return false;
+        public void Consume()
+        {
+            if (emotionsRemaining > 0)
+            {
+                emotionsRemaining--;
+                onEmotionConsumed?.Invoke();
+            }
+        }
+
+        public bool HasEmotionsRemaining()
+        {
+            if (emotionsRemaining > 0)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }
