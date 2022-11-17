@@ -27,4 +27,4 @@ Player can...
 3. Reset the level
 
 ### World
-1. Players imaginary world representing self esteem
+Game is situated in players imaginary world representing their thoughts. Levels are places in players memories that have invoked different feelings.

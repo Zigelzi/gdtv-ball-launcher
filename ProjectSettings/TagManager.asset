@@ -8,6 +8,8 @@ TagManager:
   - Emotion
   - UI_Victory
   - UI_Defeat
+  - Ball
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -17,7 +19,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
