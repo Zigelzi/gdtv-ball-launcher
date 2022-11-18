@@ -6,9 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
+    path: Assets/Scenes/Level1_Books.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/Level2_Shelves.unity
     guid: 2b1c9623841042246bacc627f4da9578
+  - enabled: 1
+    path: Assets/Scenes/Level3_Trophy.unity
+    guid: 37911242a8a65e94b8ae765a0218d353
+  - enabled: 1
+    path: Assets/Scenes/Level4_Drawer.unity
+    guid: 63a77c59ef2497a47b7ee8afe4626db2
+  - enabled: 1
+    path: Assets/Scenes/Level5_Bookshelf.unity
+    guid: 45a8797a9e5a79a4f9995baaaa1b322d
   m_configObjects: {}
