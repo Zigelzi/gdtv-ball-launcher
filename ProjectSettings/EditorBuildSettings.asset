@@ -5,19 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Level1_Books.unity
+  - enabled: 0
+    path: Assets/Scenes/Area1_Home/Level1_Books_1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
-    path: Assets/Scenes/Level2_Shelves.unity
+  - enabled: 0
+    path: Assets/Scenes/Area1_Home/Level2_Shelves_1.unity
     guid: 2b1c9623841042246bacc627f4da9578
-  - enabled: 1
-    path: Assets/Scenes/Level3_Trophy.unity
+  - enabled: 0
+    path: Assets/Scenes/Area1_Home/Level3_Trophy_1.unity
     guid: 37911242a8a65e94b8ae765a0218d353
-  - enabled: 1
-    path: Assets/Scenes/Level4_Drawer.unity
+  - enabled: 0
+    path: Assets/Scenes/Area1_Home/Level4_Drawer_1.unity
     guid: 63a77c59ef2497a47b7ee8afe4626db2
-  - enabled: 1
-    path: Assets/Scenes/Level5_Bookshelf.unity
+  - enabled: 0
+    path: Assets/Scenes/Area1_Home/Level5_Bookshelf_1.unity
     guid: 45a8797a9e5a79a4f9995baaaa1b322d
+  - enabled: 1
+    path: Assets/Scenes/Area1_Home/Level1_Bed.unity
+    guid: eff137cd611ab144ba81cce401d58ab0
+  - enabled: 1
+    path: Assets/Scenes/Area1_Home/Level2_Kitchen.unity
+    guid: d8de8e0a5d90715448018a0713e84370
+  - enabled: 1
+    path: Assets/Scenes/Area1_Home/Level3_Hallway.unity
+    guid: a7b13882e47e324498f6ba053cbd39f4
+  - enabled: 1
+    path: Assets/Scenes/Area1_Home/Level4_Corridor.unity
+    guid: a0b656501fa33054cb95be545bffacff
   m_configObjects: {}
