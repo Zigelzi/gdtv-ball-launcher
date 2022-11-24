@@ -10,7 +10,7 @@ namespace DD.Environment
 
         bool _hasCollided = false;
 
-        void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
             if (vfxPrefab == null || _hasCollided) return;
 
