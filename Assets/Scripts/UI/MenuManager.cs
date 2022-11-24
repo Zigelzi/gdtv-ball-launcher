@@ -13,6 +13,8 @@ namespace DD.UI
         [SerializeField] Canvas victoryCanvas;
         [SerializeField] Canvas defeatedCanvas;
 
+        bool _isVictorious = false;
+
         void Awake()
         {
             victoryCanvas = GameObject.FindGameObjectWithTag("UI_Victory").GetComponent<Canvas>();
@@ -24,23 +26,27 @@ namespace DD.UI
         void OnEnable()
         {
             Tower.onTowerDestroyed += HandleTowerDestroyed;
-            EmotionHandler.onEmotionsExhausted += HandleEmotionsExhausted;
+            DefeatManager.onGracePeriodEnd += HandleGracePeriodEnd;
         }
 
         void OnDisable()
         {
             Tower.onTowerDestroyed -= HandleTowerDestroyed;
-            EmotionHandler.onEmotionsExhausted -= HandleEmotionsExhausted;
+            DefeatManager.onGracePeriodEnd -= HandleGracePeriodEnd;
         }
 
         void HandleTowerDestroyed()
         {
             victoryCanvas.enabled = true;
+            _isVictorious = true;
         }
 
-        void HandleEmotionsExhausted()
+        void HandleGracePeriodEnd()
         {
-            defeatedCanvas.enabled = true;
+            if (!_isVictorious)
+            {
+                defeatedCanvas.enabled = true;
+            }
         }
     }
 
