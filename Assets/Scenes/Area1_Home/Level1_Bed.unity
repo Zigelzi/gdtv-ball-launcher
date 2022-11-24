@@ -2770,6 +2770,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 957908742957295321, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+      propertyPath: m_fontSize
+      value: 72
+      objectReference: {fileID: 0}
     - target: {fileID: 1086170852676429937, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: m_Name
       value: Core
@@ -2818,16 +2822,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5343416632980816154, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
-      propertyPath: m_Name
-      value: CanvasHUD
-      objectReference: {fileID: 0}
     - target: {fileID: 6692169509632261733, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: orthographic size
       value: 9.473684
       objectReference: {fileID: 0}
-    - target: {fileID: 7852446715358302409, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
-      propertyPath: m_IsActive
+    - target: {fileID: 8680089318906224041, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8891374128855757215, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
@@ -2837,10 +2837,6 @@ PrefabInstance:
     - target: {fileID: 8891374128855757215, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: m_LocalRotation.y
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8934216029990752248, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}

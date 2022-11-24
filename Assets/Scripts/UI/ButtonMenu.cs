@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Button : MonoBehaviour
+public class ButtonMenu : MonoBehaviour
 {
     [SerializeField] bool _nextLevelButton = false;
     int _nextLevelIndex = -1;

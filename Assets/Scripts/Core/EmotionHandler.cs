@@ -13,7 +13,7 @@ namespace DD.Core
         [SerializeField] GameObject currentSpringPivotPoint;
         [SerializeField] Emotion currentEmotion;
         [SerializeField] List<Emotion> availableEmotions = new List<Emotion>();
-        [SerializeField] GameObject selectedEmotion;
+        [SerializeField] Emotion selectedEmotion;
         [SerializeField] float emotionReleaseRange = .5f;
         [SerializeField] Vector2 dragLimit;
 
@@ -28,6 +28,7 @@ namespace DD.Core
         {
             currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
             emotionStock = GetComponent<EmotionStock>();
+            
         }
 
         void OnEnable()
@@ -39,6 +40,7 @@ namespace DD.Core
         void Start()
         {
             RespawnEmotion();
+            selectedEmotion = currentEmotion;
         }
 
         void Update()
@@ -55,6 +57,34 @@ namespace DD.Core
         {
             Tower.onTowerDestroyed -= HandleTowerDestroyed;
             Emotion.onEmotionDemolish -= HandleEmotionDestroyed;
+        }
+
+        public void NextEmotion()
+        {
+            int currentEmotionIndex = availableEmotions.IndexOf(selectedEmotion);
+            int nextEmotionIndex = currentEmotionIndex + 1;
+            if (nextEmotionIndex >= availableEmotions.Count)
+            {
+                selectedEmotion = availableEmotions[0];
+            }
+            else
+            {
+                selectedEmotion = availableEmotions[nextEmotionIndex];
+            }
+        }
+
+        public void PreviousEmotion()
+        {
+            int currentEmotionIndex = availableEmotions.IndexOf(selectedEmotion);
+            int previousEmotionIndex = currentEmotionIndex - 1;
+            if (previousEmotionIndex < 0)
+            {
+                selectedEmotion = availableEmotions[availableEmotions.Count - 1];
+            }
+            else
+            {
+                selectedEmotion = availableEmotions[previousEmotionIndex];
+            }
         }
 
         void HandleTouchInput()
