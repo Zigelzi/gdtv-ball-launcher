@@ -30,7 +30,7 @@ namespace DD.Core
         {
             _currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
             _emotionStock = GetComponent<EmotionStock>();
-            
+            _selectedEmotion = _availableEmotions[0];
         }
 
         void OnEnable()
@@ -41,8 +41,7 @@ namespace DD.Core
 
         void Start()
         {
-            RespawnEmotion();
-            _selectedEmotion = _currentEmotion;
+            RespawnEmotion(_selectedEmotion);
         }
 
         void Update()
@@ -73,6 +72,8 @@ namespace DD.Core
             {
                 _selectedEmotion = _availableEmotions[nextEmotionIndex];
             }
+
+            SwapEmotion(_selectedEmotion);
         }
 
         public void PreviousEmotion()
@@ -87,11 +88,19 @@ namespace DD.Core
             {
                 _selectedEmotion = _availableEmotions[previousEmotionIndex];
             }
+
+            SwapEmotion(_selectedEmotion);
         }
 
-        void SwapEmotion()
+        void SwapEmotion(Emotion newEmotion)
         {
+            if (_availableEmotions == null || 
+                _availableEmotions.Count == 0 ||
+                _isFlying ||
+                _currentEmotion == null) return;
 
+            Destroy(_currentEmotion.gameObject);
+            RespawnEmotion(newEmotion);
         }
 
         void HandleTouchInput()
@@ -179,10 +188,13 @@ namespace DD.Core
             _emotionStock.Consume();
         }
 
-        void RespawnEmotion()
+        void RespawnEmotion(Emotion emotion)
         {
             if (_availableEmotions == null || _availableEmotions.Count == 0) return;
-            _currentEmotion = Instantiate(_availableEmotions[0],
+
+            int spawnedEmotionIndex = _availableEmotions.IndexOf(emotion);
+
+            _currentEmotion = Instantiate(_availableEmotions[spawnedEmotionIndex],
                 _currentSpringPivotPoint.transform.position,
                 Quaternion.identity);
 
@@ -200,7 +212,7 @@ namespace DD.Core
         {
             if (_emotionStock.HasEmotionsRemaining())
             {
-                RespawnEmotion();
+                RespawnEmotion(_selectedEmotion);
             }
             else
             {
