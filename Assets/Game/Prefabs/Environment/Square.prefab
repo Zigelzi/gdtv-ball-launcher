@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 298c420647e57d645b35d2ca7b326a17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vfxPrefab: {fileID: 6882092229285707352, guid: 969243cedc4cbdc45a50d3b2eea116fe, type: 3}
+  _vfxPrefab: {fileID: 6882092229285707352, guid: 969243cedc4cbdc45a50d3b2eea116fe, type: 3}
 --- !u!61 &114104474591055105
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -158,6 +158,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711286b4d1706404cb7a7f2065358dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minimumDestroyDistance: 0.5
-  distanceFromStart: 0
-  destroyRotation: 85
+  _minimumDestroyDistance: 0.5
+  _distanceFromStart: 0
+  _destroyRotation: 85

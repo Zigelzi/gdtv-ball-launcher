@@ -8,28 +8,28 @@ namespace DD.Core
 {
     public class EmotionStock : MonoBehaviour
     {
-        [SerializeField] int maxEmotions = 5;
-        [SerializeField] int emotionsRemaining = -1;
+        [SerializeField] int _maxEmotions = 5;
+        [SerializeField] int _emotionsRemaining = -1;
 
         public static Action onEmotionConsumed;
 
         void Awake()
         {
-            emotionsRemaining = maxEmotions;
+            _emotionsRemaining = _maxEmotions;
         }
 
         public void Consume()
         {
-            if (emotionsRemaining > 0)
+            if (_emotionsRemaining > 0)
             {
-                emotionsRemaining--;
+                _emotionsRemaining--;
                 onEmotionConsumed?.Invoke();
             }
         }
 
         public bool HasEmotionsRemaining()
         {
-            if (emotionsRemaining > 0)
+            if (_emotionsRemaining > 0)
             {
                 return true;
             }

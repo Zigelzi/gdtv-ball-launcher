@@ -11,29 +11,29 @@ namespace DD.Environment
 
     public class Block : MonoBehaviour, IDemolishable
     {
-        [SerializeField] float minimumDestroyDistance = .5f;
-        [SerializeField] float distanceFromStart = 0f;
-        [SerializeField] float destroyRotation = 85f;
-        Rigidbody2D blockRb;
-
-        Vector3 startingPosition = new Vector2();
+        [SerializeField] float _minimumDestroyDistance = .5f;
+        [SerializeField] float _distanceFromStart = 0f;
+        [SerializeField] float _destroyRotation = 85f;
+        
+        Rigidbody2D _blockRb;
+        Vector3 _startingPosition = new Vector2();
 
         public static event Action<Transform> onBlockDestroyed;
 
         void Awake()
         {
-            blockRb = GetComponent<Rigidbody2D>();
-            startingPosition = transform.position;
+            _blockRb = GetComponent<Rigidbody2D>();
+            _startingPosition = transform.position;
         }
 
 
         void Update()
         {
-            distanceFromStart = Vector2.Distance(startingPosition, transform.position);
+            _distanceFromStart = Vector2.Distance(_startingPosition, transform.position);
 
-            if (distanceFromStart >= minimumDestroyDistance
-                && Mathf.Approximately(blockRb.velocity.magnitude, 0)
-                && Mathf.Abs(blockRb.rotation) >= destroyRotation
+            if (_distanceFromStart >= _minimumDestroyDistance
+                && Mathf.Approximately(_blockRb.velocity.magnitude, 0)
+                && Mathf.Abs(_blockRb.rotation) >= _destroyRotation
                 )
             {
                 Demolish();

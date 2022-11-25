@@ -9,7 +9,7 @@ namespace DD.Environment
 
     public class Tower : MonoBehaviour
     {
-        [SerializeField] List<Transform> blocks = new List<Transform>();
+        [SerializeField] List<Transform> _blocks = new List<Transform>();
 
         public static event Action onTowerDestroyed;
 
@@ -17,7 +17,7 @@ namespace DD.Environment
         {
             foreach (Transform block in transform)
             {
-                blocks.Add(block);
+                _blocks.Add(block);
             }
         }
 
@@ -33,13 +33,13 @@ namespace DD.Environment
 
         public void RemoveBlock(Transform block)
         {
-            blocks.Remove(block);
+            _blocks.Remove(block);
         }
 
         void HandleBlockDestroyed(Transform block)
         {
-            blocks.Remove(block);
-            if (blocks.Count == 0)
+            _blocks.Remove(block);
+            if (_blocks.Count == 0)
             {
                 DestroyTower();
             }

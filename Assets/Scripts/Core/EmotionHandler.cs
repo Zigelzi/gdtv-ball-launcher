@@ -12,24 +12,24 @@ namespace DD.Core
 {
     public class EmotionHandler : MonoBehaviour
     {
-        [SerializeField] GameObject currentSpringPivotPoint;
-        [SerializeField] Emotion currentEmotion;
-        [SerializeField] List<Emotion> availableEmotions = new List<Emotion>();
-        [SerializeField] Emotion selectedEmotion;
-        [SerializeField] float emotionReleaseRange = .5f;
-        [SerializeField] Vector2 dragLimit;
+        [SerializeField] GameObject _currentSpringPivotPoint;
+        [SerializeField] Emotion _currentEmotion;
+        [SerializeField] List<Emotion> _availableEmotions = new List<Emotion>();
+        [SerializeField] Emotion _selectedEmotion;
+        [SerializeField] float _emotionReleaseRange = .5f;
+        [SerializeField] Vector2 _dragLimit;
 
-        EmotionStock emotionStock;
+        EmotionStock _emotionStock;
 
-        bool isFlying = false;
-        bool isBeingLaunched = false;
+        bool _isFlying = false;
+        bool _isBeingLaunched = false;
 
         public static Action onEmotionsExhausted;
 
         void Awake()
         {
-            currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
-            emotionStock = GetComponent<EmotionStock>();
+            _currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
+            _emotionStock = GetComponent<EmotionStock>();
             
         }
 
@@ -42,14 +42,14 @@ namespace DD.Core
         void Start()
         {
             RespawnEmotion();
-            selectedEmotion = currentEmotion;
+            _selectedEmotion = _currentEmotion;
         }
 
         void Update()
         {
             HandleTouchInput();
 
-            if (isBeingLaunched && IsInReleaseRange())
+            if (_isBeingLaunched && IsInReleaseRange())
             {
                 LaunchEmotion();
             }
@@ -63,36 +63,41 @@ namespace DD.Core
 
         public void NextEmotion()
         {
-            int currentEmotionIndex = availableEmotions.IndexOf(selectedEmotion);
+            int currentEmotionIndex = _availableEmotions.IndexOf(_selectedEmotion);
             int nextEmotionIndex = currentEmotionIndex + 1;
-            if (nextEmotionIndex >= availableEmotions.Count)
+            if (nextEmotionIndex >= _availableEmotions.Count)
             {
-                selectedEmotion = availableEmotions[0];
+                _selectedEmotion = _availableEmotions[0];
             }
             else
             {
-                selectedEmotion = availableEmotions[nextEmotionIndex];
+                _selectedEmotion = _availableEmotions[nextEmotionIndex];
             }
         }
 
         public void PreviousEmotion()
         {
-            int currentEmotionIndex = availableEmotions.IndexOf(selectedEmotion);
+            int currentEmotionIndex = _availableEmotions.IndexOf(_selectedEmotion);
             int previousEmotionIndex = currentEmotionIndex - 1;
             if (previousEmotionIndex < 0)
             {
-                selectedEmotion = availableEmotions[availableEmotions.Count - 1];
+                _selectedEmotion = _availableEmotions[_availableEmotions.Count - 1];
             }
             else
             {
-                selectedEmotion = availableEmotions[previousEmotionIndex];
+                _selectedEmotion = _availableEmotions[previousEmotionIndex];
             }
+        }
+
+        void SwapEmotion()
+        {
+
         }
 
         void HandleTouchInput()
         {
             // Prevent player from moving the emotion if it's already flying
-            if (isFlying || IsTouchingUI()) return;
+            if (_isFlying || IsTouchingUI()) return;
 
             if (Touchscreen.current.primaryTouch.press.isPressed)
             {
@@ -100,8 +105,8 @@ namespace DD.Core
             }
             else
             {
-                if (currentEmotion == null) return;
-                currentEmotion.GetComponent<Rigidbody2D>().isKinematic = false;
+                if (_currentEmotion == null) return;
+                _currentEmotion.GetComponent<Rigidbody2D>().isKinematic = false;
             }
         }
 
@@ -118,25 +123,25 @@ namespace DD.Core
 
         void DragEmotion()
         {
-            Rigidbody2D emotionRb = currentEmotion.GetComponent<Rigidbody2D>();
+            Rigidbody2D emotionRb = _currentEmotion.GetComponent<Rigidbody2D>();
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
             Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
 
             Vector2 clampedPosition = ClampDragPosition(targetPosition);
-            currentEmotion.transform.position = clampedPosition;
+            _currentEmotion.transform.position = clampedPosition;
 
             emotionRb.isKinematic = true;
             emotionRb.velocity = new Vector2(0, 0);
-            isBeingLaunched = true;
+            _isBeingLaunched = true;
         }
 
         Vector2 ClampDragPosition(Vector2 currentDragPosition)
         {
-            Vector2 currentSprintPivotPosition = currentSpringPivotPoint.transform.position;
-            float dragAreaXPositiveLimit = currentSprintPivotPosition.x + dragLimit.x;
-            float dragAreaXNegativeLimit = currentSprintPivotPosition.x - dragLimit.x;
-            float dragAreaYPositiveLimit = currentSprintPivotPosition.y + dragLimit.y;
-            float dragAreaYNegativeLimit = currentSprintPivotPosition.y - dragLimit.y;
+            Vector2 currentSprintPivotPosition = _currentSpringPivotPoint.transform.position;
+            float dragAreaXPositiveLimit = currentSprintPivotPosition.x + _dragLimit.x;
+            float dragAreaXNegativeLimit = currentSprintPivotPosition.x - _dragLimit.x;
+            float dragAreaYPositiveLimit = currentSprintPivotPosition.y + _dragLimit.y;
+            float dragAreaYNegativeLimit = currentSprintPivotPosition.y - _dragLimit.y;
 
             float clampedDragXPosition = Mathf.Clamp(currentDragPosition.x, dragAreaXNegativeLimit, dragAreaXPositiveLimit);
             float clampedDragYPosition = Mathf.Clamp(currentDragPosition.y, dragAreaYNegativeLimit, dragAreaYPositiveLimit);
@@ -148,15 +153,15 @@ namespace DD.Core
 
         bool IsInReleaseRange()
         {
-            if (currentEmotion == null || currentSpringPivotPoint == null) return false;
+            if (_currentEmotion == null || _currentSpringPivotPoint == null) return false;
 
-            SpringJoint2D emotionSpringJoint = currentEmotion.GetComponent<SpringJoint2D>();
+            SpringJoint2D emotionSpringJoint = _currentEmotion.GetComponent<SpringJoint2D>();
 
             if (emotionSpringJoint == null) return false;
 
-            float emotionDistanceFromPivotPoint = Vector2.Distance(currentSpringPivotPoint.transform.position, currentEmotion.transform.position);
+            float emotionDistanceFromPivotPoint = Vector2.Distance(_currentSpringPivotPoint.transform.position, _currentEmotion.transform.position);
 
-            if (emotionDistanceFromPivotPoint <= emotionReleaseRange)
+            if (emotionDistanceFromPivotPoint <= _emotionReleaseRange)
             {
                 return true;
             }
@@ -166,24 +171,24 @@ namespace DD.Core
 
         void LaunchEmotion()
         {
-            SpringJoint2D emotionSpringJoint = currentEmotion.GetComponent<SpringJoint2D>();
+            SpringJoint2D emotionSpringJoint = _currentEmotion.GetComponent<SpringJoint2D>();
             emotionSpringJoint.enabled = false;
-            isBeingLaunched = false;
-            currentEmotion.StartLifetimeExpiry();
-            isFlying = true;
-            emotionStock.Consume();
+            _isBeingLaunched = false;
+            _currentEmotion.StartLifetimeExpiry();
+            _isFlying = true;
+            _emotionStock.Consume();
         }
 
         void RespawnEmotion()
         {
-            if (availableEmotions == null) return;
-            currentEmotion = Instantiate(availableEmotions[0],
-                currentSpringPivotPoint.transform.position,
+            if (_availableEmotions == null || _availableEmotions.Count == 0) return;
+            _currentEmotion = Instantiate(_availableEmotions[0],
+                _currentSpringPivotPoint.transform.position,
                 Quaternion.identity);
 
-            SpringJoint2D newEmotionSpringJoint = currentEmotion.GetComponent<SpringJoint2D>();
-            newEmotionSpringJoint.connectedBody = currentSpringPivotPoint.GetComponent<Rigidbody2D>();
-            isFlying = false;
+            SpringJoint2D newEmotionSpringJoint = _currentEmotion.GetComponent<SpringJoint2D>();
+            newEmotionSpringJoint.connectedBody = _currentSpringPivotPoint.GetComponent<Rigidbody2D>();
+            _isFlying = false;
         }
 
         void HandleTowerDestroyed()
@@ -193,7 +198,7 @@ namespace DD.Core
 
         void HandleEmotionDestroyed()
         {
-            if (emotionStock.HasEmotionsRemaining())
+            if (_emotionStock.HasEmotionsRemaining())
             {
                 RespawnEmotion();
             }
@@ -205,9 +210,9 @@ namespace DD.Core
 
         void OnDrawGizmos()
         {
-            if (currentSpringPivotPoint == null) return;
+            if (_currentSpringPivotPoint == null) return;
             Gizmos.color = Color.blue;
-            Gizmos.DrawWireCube(currentSpringPivotPoint.transform.position, dragLimit * 2);
+            Gizmos.DrawWireCube(_currentSpringPivotPoint.transform.position, _dragLimit * 2);
         }
     }
 }

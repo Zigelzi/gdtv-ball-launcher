@@ -9,7 +9,7 @@ namespace DD.UI
 
     public class ConsumedEmotionsDisplay : MonoBehaviour
     {
-        [SerializeField] GameObject imagePrefab;
+        [SerializeField] GameObject _imagePrefab;
 
         void OnEnable()
         {
@@ -28,10 +28,10 @@ namespace DD.UI
 
         void AddConsumedEmotion()
         {
-            if (imagePrefab == null) return;
+            if (_imagePrefab == null) return;
 
             Vector2 spawnPosition = GetSpawnPosition();
-            RectTransform instantiatedImage = Instantiate(imagePrefab, transform).GetComponent<RectTransform>();
+            RectTransform instantiatedImage = Instantiate(_imagePrefab, transform).GetComponent<RectTransform>();
 
             instantiatedImage.anchoredPosition = spawnPosition;
 

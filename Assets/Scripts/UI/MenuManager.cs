@@ -10,18 +10,18 @@ namespace DD.UI
 
     public class MenuManager : MonoBehaviour
     {
-        [SerializeField] Canvas victoryCanvas;
-        [SerializeField] Canvas defeatedCanvas;
+        [SerializeField] Canvas _victoryCanvas;
+        [SerializeField] Canvas _defeatedCanvas;
 
         bool _isVictorious = false;
 
         void Awake()
         {
-            victoryCanvas = GameObject.FindGameObjectWithTag("UI_Victory").GetComponent<Canvas>();
-            defeatedCanvas = GameObject.FindGameObjectWithTag("UI_Defeat").GetComponent<Canvas>();
+            _victoryCanvas = GameObject.FindGameObjectWithTag("UI_Victory").GetComponent<Canvas>();
+            _defeatedCanvas = GameObject.FindGameObjectWithTag("UI_Defeat").GetComponent<Canvas>();
 
-            victoryCanvas.enabled = false;
-            defeatedCanvas.enabled = false;
+            _victoryCanvas.enabled = false;
+            _defeatedCanvas.enabled = false;
         }
         void OnEnable()
         {
@@ -37,7 +37,7 @@ namespace DD.UI
 
         void HandleTowerDestroyed()
         {
-            victoryCanvas.enabled = true;
+            _victoryCanvas.enabled = true;
             _isVictorious = true;
         }
 
@@ -45,7 +45,7 @@ namespace DD.UI
         {
             if (!_isVictorious)
             {
-                defeatedCanvas.enabled = true;
+                _defeatedCanvas.enabled = true;
             }
         }
     }

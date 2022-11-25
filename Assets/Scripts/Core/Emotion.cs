@@ -7,15 +7,15 @@ namespace DD.Core
 {
     public class Emotion : MonoBehaviour, IDemolishable
     {
-        [SerializeField] float maxSpeed = 30f;
-        [SerializeField] float lifetime = 2f;
+        [SerializeField] float _maxSpeed = 30f;
+        [SerializeField] float _lifetime = 2f;
 
-        Rigidbody2D emotionRb;
+        Rigidbody2D _emotionRb;
 
         public static event Action onEmotionDemolish;
         void Awake()
         {
-            emotionRb = GetComponent<Rigidbody2D>();
+            _emotionRb = GetComponent<Rigidbody2D>();
         }
 
         void Update()
@@ -37,15 +37,15 @@ namespace DD.Core
 
         IEnumerator DestroyAfterLifeTimeExpires()
         {
-            yield return new WaitForSeconds(lifetime);
+            yield return new WaitForSeconds(_lifetime);
             Demolish();
         }
 
         void LimitVelocity()
         {
-            float maxSpeedX = Mathf.Clamp(emotionRb.velocity.x, -maxSpeed, maxSpeed);
-            float maxSpeedY = Mathf.Clamp(emotionRb.velocity.y, -maxSpeed, maxSpeed);
-            emotionRb.velocity = new Vector2(maxSpeedX, maxSpeedY);
+            float maxSpeedX = Mathf.Clamp(_emotionRb.velocity.x, -_maxSpeed, _maxSpeed);
+            float maxSpeedY = Mathf.Clamp(_emotionRb.velocity.y, -_maxSpeed, _maxSpeed);
+            _emotionRb.velocity = new Vector2(maxSpeedX, maxSpeedY);
         }
     }
 }

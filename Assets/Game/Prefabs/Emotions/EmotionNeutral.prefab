@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 497008041179484}
   - component: {fileID: 6342753386453042729}
   m_Layer: 0
-  m_Name: Emotion_Neutral
+  m_Name: EmotionNeutral
   m_TagString: Emotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,8 +156,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3ce099da6392942b11ad2255c4d084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 30
-  lifetime: 4
+  _maxSpeed: 30
+  _lifetime: 5
 --- !u!1 &3804725937278541629
 GameObject:
   m_ObjectHideFlags: 0

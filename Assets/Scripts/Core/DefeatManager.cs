@@ -7,7 +7,7 @@ namespace DD.Core
 {
     public class DefeatManager : MonoBehaviour
     {
-        [SerializeField] float gracePeriodDuration = 5f;
+        [SerializeField] float _gracePeriodDuration = 5f;
 
         public static Action onGracePeriodEnd;
 
@@ -28,7 +28,7 @@ namespace DD.Core
 
         IEnumerator GracePeriod()
         {
-            yield return new WaitForSeconds(gracePeriodDuration);
+            yield return new WaitForSeconds(_gracePeriodDuration);
             onGracePeriodEnd?.Invoke();
         }
     }
