@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 497008041179484, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+      propertyPath: m_Frequency
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 2604559633959517944, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -66,6 +70,10 @@ PrefabInstance:
     - target: {fileID: 2604559633959517947, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
       propertyPath: m_Color.r
       value: 0.9339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342753386453042729, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+      propertyPath: _maxSpeed
+      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
