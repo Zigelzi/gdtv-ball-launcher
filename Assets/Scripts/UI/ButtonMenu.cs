@@ -31,7 +31,6 @@ public class ButtonMenu : MonoBehaviour
 
     void DisableNextLevelButtonOnLastLevel()
     {
-        Debug.Log(SceneManager.sceneCountInBuildSettings);
         if (_nextLevelButton && _nextLevelIndex >= SceneManager.sceneCountInBuildSettings)
         {
             gameObject.SetActive(false);

@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 using DD.Environment;
+
 
 namespace DD.Core
 {
@@ -90,7 +92,7 @@ namespace DD.Core
         void HandleTouchInput()
         {
             // Prevent player from moving the emotion if it's already flying
-            if (isFlying) return;
+            if (isFlying || IsTouchingUI()) return;
 
             if (Touchscreen.current.primaryTouch.press.isPressed)
             {
@@ -101,6 +103,17 @@ namespace DD.Core
                 if (currentEmotion == null) return;
                 currentEmotion.GetComponent<Rigidbody2D>().isKinematic = false;
             }
+        }
+
+        bool IsTouchingUI()
+        {
+            if (Touchscreen.current.primaryTouch.press.isPressed && 
+                EventSystem.current.IsPointerOverGameObject())
+            {
+                return true;
+            }
+
+            return false;
         }
 
         void DragEmotion()
