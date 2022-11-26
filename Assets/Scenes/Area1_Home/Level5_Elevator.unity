@@ -123,6 +123,38 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &117128264
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 117128265}
+  m_Layer: 0
+  m_Name: ElevatorShaft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &117128265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117128264}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1197060347}
+  - {fileID: 1208238809}
+  m_Father: {fileID: 135185836}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135185835
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,7 +182,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1197060347}
+  - {fileID: 117128265}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -276,6 +308,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3116248705588071599, guid: 22e31644117d72f46be93b734c41bc04, type: 3}
   m_PrefabInstance: {fileID: 3116248704625982548}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1208238808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1208238809}
+  m_Layer: 0
+  m_Name: DestinationPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1208238809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1208238808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.91, y: -2.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 117128265}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1948191686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15026,8 +15088,20 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 135185836}
+    m_TransformParent: {fileID: 117128265}
     m_Modifications:
+    - target: {fileID: 2612769775738345360, guid: 22e31644117d72f46be93b734c41bc04, type: 3}
+      propertyPath: _destination
+      value: 
+      objectReference: {fileID: 1208238809}
+    - target: {fileID: 2612769775738345360, guid: 22e31644117d72f46be93b734c41bc04, type: 3}
+      propertyPath: movementSpeed
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2612769775738345360, guid: 22e31644117d72f46be93b734c41bc04, type: 3}
+      propertyPath: _destinationPosition
+      value: 
+      objectReference: {fileID: 1208238809}
     - target: {fileID: 3116248705588071598, guid: 22e31644117d72f46be93b734c41bc04, type: 3}
       propertyPath: m_Name
       value: Elevator
@@ -15042,7 +15116,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3116248705588071599, guid: 22e31644117d72f46be93b734c41bc04, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 14.85
+      value: 15.13
       objectReference: {fileID: 0}
     - target: {fileID: 3116248705588071599, guid: 22e31644117d72f46be93b734c41bc04, type: 3}
       propertyPath: m_LocalPosition.z
