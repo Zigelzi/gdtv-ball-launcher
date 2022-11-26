@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 39506729}
   - component: {fileID: 39506728}
   m_Layer: 0
-  m_Name: PivotSpring
+  m_Name: Pivot_Spring
   m_TagString: Pivot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 5830600673199247062}
   - component: {fileID: 493439914510243952}
   m_Layer: 0
-  m_Name: EmotionHandler
+  m_Name: Emotion_Handler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -196,7 +196,7 @@ GameObject:
   - component: {fileID: 7034028666331850017}
   - component: {fileID: 2289106885187762434}
   m_Layer: 0
-  m_Name: Global Volume
+  m_Name: Globa_Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 9171830524196624062}
   - component: {fileID: 957908742957295321}
   m_Layer: 0
-  m_Name: TextTitle
+  m_Name: Text_Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -411,7 +411,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8680089318906224041}
   m_Layer: 5
-  m_Name: PanelEmotionSelector
+  m_Name: Panel_Emotion_Selector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -522,7 +522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6200947281246491995}
   m_Layer: 0
-  m_Name: EventSystemAndPostProcessing
+  m_Name: EventSystem_And_Postprocessing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 8657829255556303471}
   - component: {fileID: 3155549859116290946}
   m_Layer: 5
-  m_Name: PanelConsumedEmotionsDisplay
+  m_Name: Panel_Consumed_Emotions_Display
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 4870279542248801098}
   - component: {fileID: 583795961901846221}
   m_Layer: 5
-  m_Name: ButtonNextEmotion
+  m_Name: Button_Next_Emotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -776,7 +776,7 @@ GameObject:
   - component: {fileID: 8519133201016491794}
   - component: {fileID: 9078320722580355170}
   m_Layer: 5
-  m_Name: DisplayConsumedEmotions
+  m_Name: Display_Consumed_Emotions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,7 +833,7 @@ GameObject:
   - component: {fileID: 1095172106993554781}
   - component: {fileID: 7327495562865260862}
   m_Layer: 0
-  m_Name: CMTargetGroup
+  m_Name: CM_Target_Group
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 3868196584037987673}
   - component: {fileID: 106288111546882735}
   m_Layer: 5
-  m_Name: CanvasHUD
+  m_Name: Canvas_HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1019,7 +1019,7 @@ GameObject:
   - component: {fileID: 2755209977161108018}
   - component: {fileID: 7879780693214605887}
   m_Layer: 5
-  m_Name: ButtonPreviousEmotion
+  m_Name: Button_Previous_Emotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1241,7 +1241,7 @@ GameObject:
   - component: {fileID: 5510321329518970762}
   - component: {fileID: 6377201265617551622}
   m_Layer: 0
-  m_Name: CMVirtualCamera
+  m_Name: CM_Virtual_Camera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1307,7 +1307,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8128259372252705899}
   m_Layer: 0
-  m_Name: PlayAreaBorders
+  m_Name: Play_Area_Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,7 +1341,7 @@ GameObject:
   - component: {fileID: 8249896345218481440}
   - component: {fileID: 6638346162041511606}
   m_Layer: 5
-  m_Name: PanelOverlay
+  m_Name: Panel_Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1571,7 +1571,7 @@ GameObject:
   - component: {fileID: 254265029846726925}
   - component: {fileID: 8942484254698707441}
   m_Layer: 5
-  m_Name: CanvasDefeat
+  m_Name: Canvas_Defeat
   m_TagString: UI_Defeat
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1670,7 +1670,7 @@ GameObject:
   - component: {fileID: 1070479710502469497}
   - component: {fileID: 4907092611590606042}
   m_Layer: 5
-  m_Name: PanelOverlay
+  m_Name: Panel_Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1747,7 +1747,7 @@ GameObject:
   - component: {fileID: 5461820404904002081}
   - component: {fileID: 1921858508220299695}
   m_Layer: 0
-  m_Name: MainCamera
+  m_Name: Main_Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1761,7 +1761,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8302837068829831352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 4.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6572776811337226545}
@@ -1794,7 +1794,7 @@ Camera:
   far clip plane: 30
   field of view: 60
   orthographic: 1
-  orthographic size: 9.473684
+  orthographic size: 14.2105255
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1896,7 +1896,7 @@ GameObject:
   - component: {fileID: 4897572417981811468}
   - component: {fileID: 4887500425436849267}
   m_Layer: 5
-  m_Name: CanvasVictory
+  m_Name: Canvas_Victory
   m_TagString: UI_Victory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1992,11 +1992,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 613565533695432507, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: ButtonSmall
+      value: Button_Small
       objectReference: {fileID: 0}
     - target: {fileID: 1810965724622081629, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextArea
+      value: Text_Area
       objectReference: {fileID: 0}
     - target: {fileID: 1851689633302072181, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2012,7 +2012,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3490459155929569450, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextAction
+      value: Text_Action
       objectReference: {fileID: 0}
     - target: {fileID: 4343533635678542913, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_text
@@ -2020,11 +2020,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4392456805415407891, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextHeading
+      value: Text_Heading
       objectReference: {fileID: 0}
     - target: {fileID: 4678419466938759559, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: PanelMenu
+      value: Panel_Menu
       objectReference: {fileID: 0}
     - target: {fileID: 5621756966873936833, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_text
@@ -2032,11 +2032,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6392253920774241910, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextAction
+      value: Text_Action
       objectReference: {fileID: 0}
     - target: {fileID: 6937392336754143719, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: ButtonPlayAgain
+      value: Button_Play_Again
       objectReference: {fileID: 0}
     - target: {fileID: 7721718289230128541, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Pivot.x
@@ -2136,7 +2136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578311308287282711, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextBody
+      value: Text_Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
@@ -2176,7 +2176,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1312909860691915584, guid: fe98ffe82b4960a4d9d29a1c4047cbe2, type: 3}
       propertyPath: m_Name
-      value: TextAction
+      value: Text_Action
       objectReference: {fileID: 0}
     - target: {fileID: 2818475015733299339, guid: fe98ffe82b4960a4d9d29a1c4047cbe2, type: 3}
       propertyPath: m_text
@@ -2184,7 +2184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3083606809089539281, guid: fe98ffe82b4960a4d9d29a1c4047cbe2, type: 3}
       propertyPath: m_Name
-      value: ButtonExit
+      value: Button_Exit
       objectReference: {fileID: 0}
     - target: {fileID: 4321902569949061279, guid: fe98ffe82b4960a4d9d29a1c4047cbe2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2324,11 +2324,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 613565533695432507, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: ButtonPlayAgain
+      value: Button_Play_Again
       objectReference: {fileID: 0}
     - target: {fileID: 1810965724622081629, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextArea
+      value: Text_Area
       objectReference: {fileID: 0}
     - target: {fileID: 1851689633302072181, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2344,23 +2344,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3490459155929569450, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextAction
+      value: Text_Action
       objectReference: {fileID: 0}
     - target: {fileID: 4392456805415407891, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextHeading
+      value: Text_Heading
       objectReference: {fileID: 0}
     - target: {fileID: 4678419466938759559, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: PanelMenu
+      value: Panel_Menu
       objectReference: {fileID: 0}
     - target: {fileID: 6392253920774241910, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextAction
+      value: Text_Action
       objectReference: {fileID: 0}
     - target: {fileID: 6937392336754143719, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: ButtonNextLevel
+      value: Button_Next_Level
       objectReference: {fileID: 0}
     - target: {fileID: 7721718289230128541, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_RootOrder
@@ -2404,7 +2404,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8578311308287282711, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
-      value: TextBody
+      value: Text_Body
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}

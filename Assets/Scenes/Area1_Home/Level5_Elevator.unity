@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 117128265}
   m_Layer: 0
-  m_Name: ElevatorShaft
+  m_Name: Elevator_Shaft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1208238809}
   m_Layer: 0
-  m_Name: DestinationPosition
+  m_Name: Destination_Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Circle01Add
-  m_Shader: {fileID: -6465566751694194690, guid: 1f2509c3c088bb14c9c3586bae0f468e, type: 3}
+  m_Name: Circle01_AB
+  m_Shader: {fileID: -6465566751694194690, guid: 2bd2fd989f5bcfe4ab04b7a2dcf794a1, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -25,5 +25,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats: []
     m_Colors:
-    - Color_D3573B4C: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+    - Color_D3573B4C: {r: 1.0592737, g: 1.0592737, b: 1.0592737, a: 1}
   m_BuildTextureStacks: []
