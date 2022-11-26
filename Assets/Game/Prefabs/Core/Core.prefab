@@ -168,6 +168,8 @@ MonoBehaviour:
   - {fileID: 4005138946280227736, guid: fe6f109b56fc4324eaabbe83c1ce7081, type: 3}
   - {fileID: 1065410026207076566, guid: b32905eb8ca49a94491fbdb80bcccfd7, type: 3}
   - {fileID: 1065410026207076566, guid: 2936089d65620c14fb1a8c6cba25df5f, type: 3}
+  - {fileID: 1703702521525533781, guid: 433238ce9d20af04da7aa64b9b8524e6, type: 3}
+  - {fileID: 195749114225960359, guid: 374afcde182ad5443b8407370b79ab2c, type: 3}
   _selectedEmotion: {fileID: 0}
   _emotionReleaseRange: 0.5
   _dragLimit: {x: 3, y: 3}
