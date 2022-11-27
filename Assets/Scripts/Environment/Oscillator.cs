@@ -33,8 +33,7 @@ namespace DD.Environment
             {
                 MoveToPosition(_startingPosition);
                 StopAtDestination(_startingPosition);
-            }
-            
+            }   
         }
 
         void MoveToPosition(Vector3 destinationPosition)
