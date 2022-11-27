@@ -180,11 +180,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1721600410141516201, guid: 5888c341778c06446aee1f80ac99b155, type: 3}
       propertyPath: m_Name
-      value: EnvironmentBase
+      value: Environment_Base
       objectReference: {fileID: 0}
     - target: {fileID: 5682197653321082257, guid: 5888c341778c06446aee1f80ac99b155, type: 3}
       propertyPath: m_Name
-      value: WallGray
+      value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 6693927687005794170, guid: 5888c341778c06446aee1f80ac99b155, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.44
       objectReference: {fileID: 0}
     - target: {fileID: 6859182967134570293, guid: 5888c341778c06446aee1f80ac99b155, type: 3}
       propertyPath: m_Name
@@ -2673,6 +2677,14 @@ PrefabInstance:
     - target: {fileID: 6859182967651186514, guid: 5888c341778c06446aee1f80ac99b155, type: 3}
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[19].Y
       value: -110000100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7469386757950937255, guid: 5888c341778c06446aee1f80ac99b155, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 025a64502c5de83428d7d313e78e25e7, type: 3}
+    - target: {fileID: 7469386757950937255, guid: 5888c341778c06446aee1f80ac99b155, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5888c341778c06446aee1f80ac99b155, type: 3}

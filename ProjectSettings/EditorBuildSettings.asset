@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Area1_Home/Level5_Elevator.unity
     guid: e08094dea6460bf419c543ac0482e8f6
+  - enabled: 1
+    path: Assets/Scenes/Area2_Travel/Level6_Walkway.unity
+    guid: c6729fcbacdbaa549a458f82d59bb192
   m_configObjects: {}
