@@ -58,6 +58,8 @@ Players journey is through the different basic emotions described in the (wheel 
 
 Player should feel like person who is able to recognise their emotions and use them as their advantage to solve problems in the game and in their life.
 
+The player experience is relaxing, thought provoking, cheerful and smart.
+
 ### Core audience
 
 Primary audience is persons who haven't played much games, have mobile phone available and want to play some casual but thought provoking game in 3 - 15 minute sessions.
@@ -71,4 +73,4 @@ Player can...
 
 ### World
 
-Game is situated in players imaginary world representing their thoughts. Levels are places in players memories that have invoked different feelings.
+Game is situated in the mind of person who is going to have important presentation that they're anxious of.

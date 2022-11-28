@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1065410026207076566, guid: 2936089d65620c14fb1a8c6cba25df5f, type: 3}
       propertyPath: _maxSpeed
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7362651847336321123, guid: 2936089d65620c14fb1a8c6cba25df5f, type: 3}
       propertyPath: m_Color.b
