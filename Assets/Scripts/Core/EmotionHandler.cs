@@ -21,6 +21,7 @@ namespace DD.Core
 
         EmotionStock _emotionStock;
 
+        bool _isDragged = false;
         bool _isFlying = false;
         bool _isBeingLaunched = false;
 
@@ -116,6 +117,7 @@ namespace DD.Core
             {
                 if (_currentEmotion == null) return;
                 _currentEmotion.GetComponent<Rigidbody2D>().isKinematic = false;
+                _isDragged = false;
             }
         }
 
@@ -135,12 +137,14 @@ namespace DD.Core
             Rigidbody2D emotionRb = _currentEmotion.GetComponent<Rigidbody2D>();
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
             Vector2 targetPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-
             Vector2 clampedPosition = ClampDragPosition(targetPosition);
+
             _currentEmotion.transform.position = clampedPosition;
 
             emotionRb.isKinematic = true;
             emotionRb.velocity = new Vector2(0, 0);
+
+            _isDragged = true;
             _isBeingLaunched = true;
         }
 
@@ -162,7 +166,9 @@ namespace DD.Core
 
         bool IsInReleaseRange()
         {
-            if (_currentEmotion == null || _currentSpringPivotPoint == null) return false;
+            if (_currentEmotion == null || 
+                _currentSpringPivotPoint == null ||
+                _isDragged) return false;
 
             SpringJoint2D emotionSpringJoint = _currentEmotion.GetComponent<SpringJoint2D>();
 
@@ -181,24 +187,29 @@ namespace DD.Core
         void LaunchEmotion()
         {
             SpringJoint2D emotionSpringJoint = _currentEmotion.GetComponent<SpringJoint2D>();
+
             emotionSpringJoint.enabled = false;
             _isBeingLaunched = false;
-            _currentEmotion.StartLifetimeExpiry();
             _isFlying = true;
+
+            _currentEmotion.StartLifetimeExpiry();
             _emotionStock.Consume();
         }
 
         void RespawnEmotion(Emotion emotion)
         {
+            SpringJoint2D newEmotionSpringJoint;
+            int spawnedEmotionIndex;
+
             if (_availableEmotions == null || _availableEmotions.Count == 0) return;
 
-            int spawnedEmotionIndex = _availableEmotions.IndexOf(emotion);
+            spawnedEmotionIndex = _availableEmotions.IndexOf(emotion);
 
             _currentEmotion = Instantiate(_availableEmotions[spawnedEmotionIndex],
                 _currentSpringPivotPoint.transform.position,
                 Quaternion.identity);
 
-            SpringJoint2D newEmotionSpringJoint = _currentEmotion.GetComponent<SpringJoint2D>();
+            newEmotionSpringJoint = _currentEmotion.GetComponent<SpringJoint2D>();
             newEmotionSpringJoint.connectedBody = _currentSpringPivotPoint.GetComponent<Rigidbody2D>();
             _isFlying = false;
         }
