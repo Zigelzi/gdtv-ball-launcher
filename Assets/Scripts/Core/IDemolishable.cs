@@ -6,6 +6,6 @@ namespace DD.Core
 {
     public interface IDemolishable
     {
-        void Demolish();
+        void Demolish(GameObject source);
     }
 }

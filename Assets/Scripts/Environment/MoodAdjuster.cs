@@ -11,6 +11,8 @@ namespace DD.Environment
     {
         [SerializeField] int _hitEmotions = 0;
         [SerializeField] float _gravityMultiplier = 0.05f;
+        [SerializeField] float _maxSpeed = 5f;
+        [SerializeField] int _happyMoodTreshhold = 3;
         
         Rigidbody2D _rb;
 
@@ -28,6 +30,7 @@ namespace DD.Environment
         void Update()
         {
             HandleMood();
+            _rb.velocity = new Vector2(0, Mathf.Clamp(_rb.velocity.y, -_maxSpeed, _maxSpeed));
         }
 
         void OnDisable()
@@ -50,14 +53,19 @@ namespace DD.Environment
 
         void AbsorbEmotion(Emotion emotion)
         {
-            emotion.Demolish();
-            _hitEmotions++;
-
+            emotion.Demolish(gameObject);
         }
 
-        void HandleEmotionDemolished()
+        void HandleEmotionDemolished(GameObject source)
         {
-            _rb.velocity = new Vector2(0, 0);
+            if (source == gameObject)
+            {
+                _hitEmotions++;
+            }
+            if (source.TryGetComponent<Boundary>(out Boundary boundary))
+            {
+                _hitEmotions--;
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ namespace DD.Environment
         {
             if (collision.gameObject.TryGetComponent<IDemolishable>(out IDemolishable demolisable))
             {
-                demolisable.Demolish();
+                demolisable.Demolish(gameObject);
             }
         }
     }

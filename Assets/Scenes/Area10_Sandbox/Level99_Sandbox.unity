@@ -228,7 +228,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb55696ddd97f134aade8433e17a6287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitEmotions: 0
+  _hitEmotions: 0
+  _gravityMultiplier: 0.01
+  _maxSpeed: 1
+  _happyMoodTreshhold: 3
 --- !u!50 &1994309588
 Rigidbody2D:
   serializedVersion: 4
@@ -335,7 +338,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994309586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.61, y: -0.88, z: 0}
+  m_LocalPosition: {x: 4.59, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

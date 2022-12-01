@@ -36,11 +36,11 @@ namespace DD.Environment
                 && Mathf.Abs(_blockRb.rotation) >= _destroyRotation
                 )
             {
-                Demolish();
+                Demolish(gameObject);
             }
         }
 
-        public void Demolish()
+        public void Demolish(GameObject source)
         {
             transform.gameObject.SetActive(false);
             onBlockDestroyed?.Invoke(transform);

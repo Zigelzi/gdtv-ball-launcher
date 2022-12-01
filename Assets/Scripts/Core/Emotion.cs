@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DD.Core
@@ -12,7 +11,7 @@ namespace DD.Core
 
         Rigidbody2D _emotionRb;
 
-        public static event Action onEmotionDemolish;
+        public static event Action<GameObject> onEmotionDemolish;
         void Awake()
         {
             _emotionRb = GetComponent<Rigidbody2D>();
@@ -23,11 +22,11 @@ namespace DD.Core
             LimitVelocity();
         }
 
-        public void Demolish()
+        public void Demolish(GameObject source)
         {
             StopCoroutine(DestroyAfterLifeTimeExpires());
             Destroy(gameObject);
-            onEmotionDemolish?.Invoke();
+            onEmotionDemolish?.Invoke(source);
         }
 
         public void StartLifetimeExpiry()
@@ -38,7 +37,7 @@ namespace DD.Core
         IEnumerator DestroyAfterLifeTimeExpires()
         {
             yield return new WaitForSeconds(_lifetime);
-            Demolish();
+            Demolish(gameObject);
         }
 
         void LimitVelocity()

@@ -219,7 +219,7 @@ namespace DD.Core
             enabled = false;
         }
 
-        void HandleEmotionDestroyed()
+        void HandleEmotionDestroyed(GameObject emotion)
         {
             if (_emotionStock.HasEmotionsRemaining())
             {
