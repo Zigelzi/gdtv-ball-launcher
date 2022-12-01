@@ -12,7 +12,7 @@ List of issues that can be worked to deliver the desired player experience categ
    - [ ] Prototype how to make win condition feel more fair
 
 ## UI
-- [ ] Add main menu UI
+- [x] Add main menu UI
 - [ ] Add pause UI
 - [ ] Display emotion selection UI only on tap
 
