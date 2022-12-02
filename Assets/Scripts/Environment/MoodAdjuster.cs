@@ -10,8 +10,8 @@ namespace DD.Environment
     public class MoodAdjuster : MonoBehaviour
     {
         [SerializeField] int _hitEmotions = 0;
-        [SerializeField] float _gravityMultiplier = 0.05f;
-        [SerializeField] float _maxSpeed = 5f;
+        [SerializeField] float _happyMoodGravity = 1.5f;
+        [SerializeField] float _maxVelocity = 3f;
         [SerializeField] int _happyMoodTreshhold = 3;
         
         Rigidbody2D _rb;
@@ -29,8 +29,7 @@ namespace DD.Environment
 
         void Update()
         {
-            HandleMood();
-            _rb.velocity = new Vector2(0, Mathf.Clamp(_rb.velocity.y, -_maxSpeed, _maxSpeed));
+            TriggerHappyMood();
         }
 
         void OnDisable()
@@ -46,9 +45,14 @@ namespace DD.Environment
             }    
         }
 
-        void HandleMood()
+        void TriggerHappyMood()
         {
-            _rb.gravityScale = _hitEmotions * -_gravityMultiplier;
+            if (_hitEmotions >= _happyMoodTreshhold)
+            {
+                _rb.gravityScale = -_happyMoodGravity;
+                _rb.velocity = new Vector2(0, Mathf.Clamp(_rb.velocity.y, -_maxVelocity, _maxVelocity));
+            }
+            
         }
 
         void AbsorbEmotion(Emotion emotion)

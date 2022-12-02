@@ -229,8 +229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hitEmotions: 0
-  _gravityMultiplier: 0.01
-  _maxSpeed: 1
+  _happyMoodGravity: 0.5
+  _maxVelocity: 8
   _happyMoodTreshhold: 3
 --- !u!50 &1994309588
 Rigidbody2D:
@@ -351,6 +351,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 493439914510243952, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
+      propertyPath: _maxEmotions
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1086170852676429937, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: m_Name
       value: Core
