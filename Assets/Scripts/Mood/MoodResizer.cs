@@ -6,7 +6,7 @@ namespace DD.Mood
 {
     public class MoodResizer : MonoBehaviour
     {
-        [SerializeField] float _sizeChangeStep = .5f;
+        [SerializeField] float _sizeChangeRatio = 1.5f;
         [SerializeField] float _sizeChangeSpeed = 1f;
 
         MoodAdjuster _moodAdjuster;
@@ -39,7 +39,7 @@ namespace DD.Mood
 
         IEnumerator Grow()
         {
-            Vector3 newSize = transform.localScale + (Vector3.one * _sizeChangeStep);
+            Vector3 newSize = transform.localScale * _sizeChangeRatio;
             while (transform.localScale.x < newSize.x)
             {
                 transform.localScale = Vector3.Lerp(transform.localScale, newSize, Time.deltaTime * _sizeChangeSpeed);
@@ -49,7 +49,7 @@ namespace DD.Mood
 
         IEnumerator Shrink()
         {
-            Vector3 newSize = transform.localScale - (Vector3.one * _sizeChangeStep);
+            Vector3 newSize = transform.localScale / _sizeChangeRatio;
             while (transform.localScale.x > newSize.x)
             {
                 transform.localScale = Vector3.Lerp(transform.localScale, newSize, Time.deltaTime * _sizeChangeSpeed);
