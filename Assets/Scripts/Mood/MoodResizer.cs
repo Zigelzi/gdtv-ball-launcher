@@ -29,7 +29,7 @@ namespace DD.Mood
 
         void HandleEmotionHit()
         {
-
+            StartCoroutine(Shrink());
         }
 
         void HandleEmotionMiss()
@@ -41,6 +41,16 @@ namespace DD.Mood
         {
             Vector3 newSize = transform.localScale + (Vector3.one * _sizeChangeStep);
             while (transform.localScale.x < newSize.x)
+            {
+                transform.localScale = Vector3.Lerp(transform.localScale, newSize, Time.deltaTime * _sizeChangeSpeed);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+
+        IEnumerator Shrink()
+        {
+            Vector3 newSize = transform.localScale - (Vector3.one * _sizeChangeStep);
+            while (transform.localScale.x > newSize.x)
             {
                 transform.localScale = Vector3.Lerp(transform.localScale, newSize, Time.deltaTime * _sizeChangeSpeed);
                 yield return new WaitForEndOfFrame();
