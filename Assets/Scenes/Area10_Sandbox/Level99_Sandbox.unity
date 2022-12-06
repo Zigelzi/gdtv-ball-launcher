@@ -209,6 +209,7 @@ GameObject:
   - component: {fileID: 1994309589}
   - component: {fileID: 1994309588}
   - component: {fileID: 1994309587}
+  - component: {fileID: 1994309592}
   m_Layer: 0
   m_Name: Mood
   m_TagString: Untagged
@@ -232,6 +233,12 @@ MonoBehaviour:
   _happyMoodGravity: 0.5
   _maxVelocity: 8
   _happyMoodTreshhold: 3
+  onEmotionHit:
+    m_PersistentCalls:
+      m_Calls: []
+  onEmotionMiss:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!50 &1994309588
 Rigidbody2D:
   serializedVersion: 4
@@ -344,6 +351,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1994309592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1994309586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df4f32a2bc0339e4fb28d71fc328561a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sizeChangeStep: 1
 --- !u!1001 &2013571529
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -405,7 +425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6692169509632261733, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}
       propertyPath: orthographic size
-      value: 9.473684
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b752687b5ecfabc4dbd198fe9acada5c, type: 3}

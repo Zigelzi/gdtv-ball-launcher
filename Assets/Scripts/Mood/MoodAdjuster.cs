@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-using DD.Core;
 using UnityEngine.Events;
 
-namespace DD.Environment
+using DD.Core;
+using DD.Environment;
+
+namespace DD.Mood
 {
     public class MoodAdjuster : MonoBehaviour
     {
@@ -15,6 +16,9 @@ namespace DD.Environment
         [SerializeField] int _happyMoodTreshhold = 3;
         
         Rigidbody2D _rb;
+
+        public UnityEvent onEmotionHit;
+        public UnityEvent onEmotionMiss;
 
         void Awake()
         {
@@ -58,6 +62,7 @@ namespace DD.Environment
         void AbsorbEmotion(Emotion emotion)
         {
             emotion.Demolish(gameObject);
+            
         }
 
         void HandleEmotionDemolished(GameObject source)
@@ -65,11 +70,14 @@ namespace DD.Environment
             if (source == gameObject)
             {
                 _hitEmotions++;
+                onEmotionHit?.Invoke();
             }
             if (source.TryGetComponent<Boundary>(out Boundary boundary))
             {
                 _hitEmotions--;
+                onEmotionMiss?.Invoke();
             }
+            
         }
     }
 }
