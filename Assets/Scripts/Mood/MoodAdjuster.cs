@@ -19,6 +19,7 @@ namespace DD.Mood
 
         public UnityEvent onEmotionHit;
         public UnityEvent onEmotionMiss;
+        public UnityEvent onHappyMood;
 
         void Awake()
         {
@@ -55,8 +56,15 @@ namespace DD.Mood
             {
                 _rb.gravityScale = -_happyMoodGravity;
                 _rb.velocity = new Vector2(0, Mathf.Clamp(_rb.velocity.y, -_maxVelocity, _maxVelocity));
+                StartCoroutine(StartHappyMood());
             }
             
+        }
+
+        IEnumerator StartHappyMood()
+        {
+            yield return new WaitForSeconds(2f);
+            onHappyMood?.Invoke();
         }
 
         void AbsorbEmotion(Emotion emotion)

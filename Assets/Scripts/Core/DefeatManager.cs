@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace DD.Core
 {
@@ -9,7 +10,7 @@ namespace DD.Core
     {
         [SerializeField] float _gracePeriodDuration = 5f;
 
-        public static Action onGracePeriodEnd;
+        public UnityEvent onGracePeriodEnd;
 
         void Awake()
         {

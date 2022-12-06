@@ -11,6 +11,7 @@ namespace DD.Environment
     {
         [SerializeField] List<Transform> _blocks = new List<Transform>();
 
+        // TODO: Get rid of static event
         public static event Action onTowerDestroyed;
 
         void Awake()

@@ -11,6 +11,7 @@ namespace DD.Core
 
         Rigidbody2D _emotionRb;
 
+        // TODO: Get rid of static event
         public static event Action<GameObject> onEmotionDemolish;
         void Awake()
         {

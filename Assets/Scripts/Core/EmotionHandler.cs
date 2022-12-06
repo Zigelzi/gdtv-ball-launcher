@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
 using DD.Environment;
+using DD.Mood;
 
 
 namespace DD.Core
@@ -20,6 +21,7 @@ namespace DD.Core
         [SerializeField] Vector2 _dragLimit;
 
         EmotionStock _emotionStock;
+        MoodAdjuster _moodAdjuster;
 
         bool _isDragged = false;
         bool _isFlying = false;
@@ -31,6 +33,7 @@ namespace DD.Core
         {
             _currentSpringPivotPoint = GameObject.FindGameObjectWithTag("Pivot");
             _emotionStock = GetComponent<EmotionStock>();
+            _moodAdjuster = FindObjectOfType<MoodAdjuster>();
             _selectedEmotion = _availableEmotions[0];
         }
 
@@ -38,6 +41,7 @@ namespace DD.Core
         {
             Tower.onTowerDestroyed += HandleTowerDestroyed;
             Emotion.onEmotionDemolish += HandleEmotionDestroyed;
+            _moodAdjuster.onHappyMood.AddListener(HandleHappyMood);
         }
 
         void Start()
@@ -59,6 +63,8 @@ namespace DD.Core
         {
             Tower.onTowerDestroyed -= HandleTowerDestroyed;
             Emotion.onEmotionDemolish -= HandleEmotionDestroyed;
+
+            _moodAdjuster.onHappyMood.RemoveListener(HandleHappyMood);
         }
 
         public void NextEmotion()
@@ -229,6 +235,11 @@ namespace DD.Core
             {
                 onEmotionsExhausted?.Invoke();
             }
+        }
+
+        void HandleHappyMood()
+        {
+            enabled = false;
         }
 
         void OnDrawGizmos()

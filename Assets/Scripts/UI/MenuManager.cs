@@ -4,6 +4,7 @@ using UnityEngine;
 
 using DD.Core;
 using DD.Environment;
+using DD.Mood;
 
 namespace DD.UI
 {
@@ -15,6 +16,9 @@ namespace DD.UI
 
         bool _isVictorious = false;
 
+        DefeatManager _defeatManager;
+        MoodAdjuster _moodAdjuster;
+
         void Awake()
         {
             _victoryCanvas = GameObject.FindGameObjectWithTag("UI_Victory").GetComponent<Canvas>();
@@ -22,20 +26,25 @@ namespace DD.UI
 
             _victoryCanvas.enabled = false;
             _defeatedCanvas.enabled = false;
+
+            _defeatManager = FindObjectOfType<DefeatManager>();
+            _moodAdjuster = FindObjectOfType<MoodAdjuster>();
         }
         void OnEnable()
         {
-            Tower.onTowerDestroyed += HandleTowerDestroyed;
-            DefeatManager.onGracePeriodEnd += HandleGracePeriodEnd;
+            Tower.onTowerDestroyed += HandleVictory;
+            _defeatManager.onGracePeriodEnd.AddListener(HandleGracePeriodEnd);
+            _moodAdjuster.onHappyMood.AddListener(HandleVictory);
         }
 
         void OnDisable()
         {
-            Tower.onTowerDestroyed -= HandleTowerDestroyed;
-            DefeatManager.onGracePeriodEnd -= HandleGracePeriodEnd;
+            Tower.onTowerDestroyed -= HandleVictory;
+            _defeatManager.onGracePeriodEnd.RemoveListener(HandleGracePeriodEnd);
+            _moodAdjuster.onHappyMood.RemoveListener(HandleVictory);
         }
 
-        void HandleTowerDestroyed()
+        void HandleVictory()
         {
             _victoryCanvas.enabled = true;
             _isVictorious = true;

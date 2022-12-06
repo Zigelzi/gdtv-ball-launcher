@@ -18,6 +18,7 @@ namespace DD.Environment
         Rigidbody2D _blockRb;
         Vector3 _startingPosition = new Vector2();
 
+        // TODO: Get rid of static event
         public static event Action<Transform> onBlockDestroyed;
 
         void Awake()
