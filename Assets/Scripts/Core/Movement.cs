@@ -8,44 +8,64 @@ namespace DD.Core
 {
     public class Movement : MonoBehaviour
     {
-        [SerializeField] float movementSpeed = 20f;
+        [SerializeField] float movementSpeed = 2f;
 
         Rigidbody2D _rb;
         LinearAccelerationSensor accelerationSensor;
-        UnityEngine.InputSystem.Gyroscope gyro;
+        Gyroscope gyro;
+        GravitySensor gravitySensor;
 
         void Awake()
         {
-            accelerationSensor = LinearAccelerationSensor.current;
-            gyro = Gyroscope.current;
-
             _rb = GetComponent<Rigidbody2D>();
-        }
-
-        void OnEnable()
-        {
-            InputSystem.EnableDevice(accelerationSensor);
-            InputSystem.EnableDevice(gyro);
         }
 
         void Update()
         {
-            MoveEmotion();
-        }
+            gyro = GetDevice<Gyroscope>(UnityEditor.EditorApplication.isRemoteConnected);
 
-        void OnDisable()
-        {
-            InputSystem.DisableDevice(accelerationSensor);
-            InputSystem.EnableDevice(gyro);
+            EnableDeviceIfNeeded(gyro);
+            MoveEmotion();
         }
 
         void MoveEmotion()
         {
-            if (accelerationSensor == null) return;
+            if (gyro == null) return;
 
-            Vector2 acceleration = accelerationSensor.acceleration.ReadValue() * movementSpeed;
+            float upwardsForce = Mathf.Abs(gyro.angularVelocity.ReadValue().z) * movementSpeed;
+            Vector2 acceleration = new Vector2(0, upwardsForce);
 
             _rb.AddForce(acceleration, ForceMode2D.Impulse);
+        }
+
+        TDevice GetDevice<TDevice>(bool isRemote) where TDevice : InputDevice
+        {
+            foreach (InputDevice device in InputSystem.devices)
+            {
+                if (isRemote)
+                {
+                    if (device.remote && device is TDevice deviceOfType)
+                    {
+                        return deviceOfType;
+                    }
+                }
+                else
+                {
+                    if (device is TDevice deviceOfType)
+                    {
+                        return deviceOfType;
+                    }
+                }
+            }
+            return default;
+        }
+
+        void EnableDeviceIfNeeded(InputDevice device)
+        {
+            if (device != null && !device.enabled)
+            {
+                InputSystem.EnableDevice(device);
+            }
         }
     }
 }

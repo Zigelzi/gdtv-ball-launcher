@@ -12,46 +12,54 @@ namespace DD.UI
         [SerializeField] TMP_Text _textAcceleration;
         [SerializeField] TMP_Text _textGyro;
 
-        void OnEnable()
-        {
-            if (IsSensorsSupported())
-            {
-                InputSystem.EnableDevice(Gyroscope.current);
-            }
-        }
-
-        void OnDisable()
-        {
-            if(IsSensorsSupported())
-            {
-                InputSystem.DisableDevice(Gyroscope.current);
-            }
-            
-        }
 
         // Update is called once per frame
         void Update()
         {
-            string acceleration;
-            string gyroAcceleration;
+            UpdateGyro();
+        }
 
-            if (IsSensorsSupported())
+        void UpdateGyro()
+        {
+
+            Gyroscope gyro = GetDevice<Gyroscope>(UnityEditor.EditorApplication.isRemoteConnected);
+
+            EnableDeviceIfNeeded(gyro);
+
+            if (gyro != null)
             {
-                gyroAcceleration = Gyroscope.current.angularVelocity.ReadValue().ToString();
-                _textGyro.text = gyroAcceleration;
-            }
-            else
-            {
-                _textAcceleration.text = "Sensors not supported";
-                _textGyro.text = "Sensors not supported";
+                _textGyro.text = gyro.angularVelocity.ReadValue().ToString();
             }
         }
 
-        bool IsSensorsSupported()
+        TDevice GetDevice<TDevice>(bool isRemote) where TDevice : InputDevice
         {
-            if (SystemInfo.supportsGyroscope) return true;
+            foreach(InputDevice device in InputSystem.devices)
+            {
+                if (isRemote)
+                {
+                    if (device.remote && device is TDevice deviceOfType)
+                    {
+                        return deviceOfType;
+                    }
+                }
+                else
+                {
+                    if (device is TDevice deviceOfType)
+                    {
+                        return deviceOfType;
+                    }
+                }
+            }
+            return default;
+        }
 
-            return false;
+        void EnableDeviceIfNeeded(InputDevice device)
+        {
+            if (device != null && !device.enabled)
+            {
+                InputSystem.EnableDevice(device);
+            }
         }
     }
 }
