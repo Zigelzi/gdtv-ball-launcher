@@ -8,13 +8,13 @@ namespace DD.Core
 {
     public class Movement : MonoBehaviour
     {
+        [SerializeField] float bounceStrength = 4f;
         [SerializeField] float movementSpeed = 2f;
         [SerializeField] LayerMask groundLayer;
         [SerializeField] float flyingTreshold = .1f;
         [SerializeField] float rotationSpeedTreshhold = 1.5f;
 
         Rigidbody2D _rb;
-        LinearAccelerationSensor accelerationSensor;
         Gyroscope gyro;
         GravitySensor gravitySensor;
 
@@ -26,13 +26,20 @@ namespace DD.Core
         void Update()
         {
             gyro = GetDevice<Gyroscope>(UnityEditor.EditorApplication.isRemoteConnected);
-
+            gravitySensor = GetDevice<GravitySensor>(UnityEditor.EditorApplication.isRemoteConnected);
             EnableDeviceIfNeeded(gyro);
+            EnableDeviceIfNeeded(gravitySensor);
+
             if (!IsFlying() && IsRotatingFast())
             {
                 Bounce();
             }
             
+        }
+
+        void FixedUpdate()
+        {
+            Roll();    
         }
 
         bool IsFlying()
@@ -64,13 +71,19 @@ namespace DD.Core
         {
             if (gyro == null) return;
 
-            float upwardsForce = Mathf.Abs(gyro.angularVelocity.ReadValue().z) * movementSpeed;
+            float upwardsForce = Mathf.Abs(gyro.angularVelocity.ReadValue().z) * bounceStrength;
             Vector2 acceleration = new Vector2(0, upwardsForce);
 
             _rb.AddForce(acceleration, ForceMode2D.Impulse);
         }
 
+        void Roll()
+        {
+            if (gravitySensor == null) return;
 
+            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().y, 0);
+            _rb.AddForce(-horizontalForce * movementSpeed, ForceMode2D.Impulse);
+        }
 
         TDevice GetDevice<TDevice>(bool isRemote) where TDevice : InputDevice
         {
