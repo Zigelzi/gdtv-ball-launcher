@@ -11,6 +11,7 @@ namespace DD.Core
         [SerializeField] float movementSpeed = 2f;
         [SerializeField] LayerMask groundLayer;
         [SerializeField] float flyingTreshold = .1f;
+        [SerializeField] float rotationSpeedTreshhold = 1.5f;
 
         Rigidbody2D _rb;
         LinearAccelerationSensor accelerationSensor;
@@ -27,7 +28,7 @@ namespace DD.Core
             gyro = GetDevice<Gyroscope>(UnityEditor.EditorApplication.isRemoteConnected);
 
             EnableDeviceIfNeeded(gyro);
-            if (!IsFlying())
+            if (!IsFlying() && IsRotatingFast())
             {
                 Bounce();
             }
@@ -41,6 +42,17 @@ namespace DD.Core
             float distanceFromGround = hit.distance - colliderRadius;
 
             if (distanceFromGround >= flyingTreshold)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        bool IsRotatingFast()
+        {
+            float rotationSpeed = Mathf.Abs(gyro.angularVelocity.ReadValue().z);
+            if (rotationSpeed >= rotationSpeedTreshhold)
             {
                 return true;
             }
