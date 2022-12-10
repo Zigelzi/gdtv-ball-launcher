@@ -9,6 +9,8 @@ namespace DD.Core
     public class Movement : MonoBehaviour
     {
         [SerializeField] float movementSpeed = 2f;
+        [SerializeField] LayerMask groundLayer;
+        [SerializeField] float flyingTreshold = .1f;
 
         Rigidbody2D _rb;
         LinearAccelerationSensor accelerationSensor;
@@ -25,10 +27,28 @@ namespace DD.Core
             gyro = GetDevice<Gyroscope>(UnityEditor.EditorApplication.isRemoteConnected);
 
             EnableDeviceIfNeeded(gyro);
-            MoveEmotion();
+            if (!IsFlying())
+            {
+                Bounce();
+            }
+            
         }
 
-        void MoveEmotion()
+        bool IsFlying()
+        {
+            RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, Mathf.Infinity, groundLayer);
+            float colliderRadius = GetComponent<CircleCollider2D>().radius;
+            float distanceFromGround = hit.distance - colliderRadius;
+
+            if (distanceFromGround >= flyingTreshold)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        void Bounce()
         {
             if (gyro == null) return;
 
@@ -37,6 +57,8 @@ namespace DD.Core
 
             _rb.AddForce(acceleration, ForceMode2D.Impulse);
         }
+
+
 
         TDevice GetDevice<TDevice>(bool isRemote) where TDevice : InputDevice
         {
