@@ -25,8 +25,17 @@ namespace DD.Core
 
         void Update()
         {
-            gyro = GetDevice<Gyroscope>(UnityEditor.EditorApplication.isRemoteConnected);
-            gravitySensor = GetDevice<GravitySensor>(UnityEditor.EditorApplication.isRemoteConnected);
+            if (Application.isEditor)
+            {
+                gyro = GetDevice<Gyroscope>(true);
+                gravitySensor = GetDevice<GravitySensor>(true);
+            }
+            else
+            {
+                gyro = GetDevice<Gyroscope>(false);
+                gravitySensor = GetDevice<GravitySensor>(false);
+            }
+            
             EnableDeviceIfNeeded(gyro);
             EnableDeviceIfNeeded(gravitySensor);
 
@@ -81,8 +90,8 @@ namespace DD.Core
         {
             if (gravitySensor == null) return;
 
-            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().y, 0);
-            _rb.AddForce(-horizontalForce * movementSpeed, ForceMode2D.Impulse);
+            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().x, 0);
+            _rb.AddForce(horizontalForce * movementSpeed, ForceMode2D.Impulse);
         }
 
         TDevice GetDevice<TDevice>(bool isRemote) where TDevice : InputDevice

@@ -4,17 +4,18 @@ Course project for GameDev.tv Unity C# Mobile Game Development.
 
 ## Summary
 
-Defeating Downbeat is physics puzzle game where player uses projectiles representing their emotions to bring the tower of mental burden down.
-
-Think Angry Birds with emotions.
+Defeating Downbeat is physics puzzle game where player processes emotions through mazes to release good mood!
 
 ## Technical details
 
 **Genre:** Single player 2D physics puzzle game
-**Controls:** Phone touch inputs in horizontal mode
-**Thematic setting:** Imaginary world representing players self esteem
-**Platform:** Android / iPhone
-**MVP game moment:** 2 levels with 3 selectable projectile types.
+**Controls:** Phone movement with sensors in horizontal mode
+**Thematic setting:** Players thoughts throughout their day
+**Platform:** Android
+**MVP game moment:** 2 areas with 5 levels
+
+## Gameplay
+Players goal is to get the emotion to get different emotions to their buckets (what?) through different obstacles.
 
 ## Story
 ### Game
@@ -67,9 +68,8 @@ Primary audience is persons who haven't played much games, have mobile phone ava
 ### Actions
 
 Player can...
-1. Launch an emotion towards the tower of mental burder
-2. Select different emotions to launch
-3. Reset the level
+1. Move the emotions by moving their phone
+2. Reset the level
 
 ### World
 
