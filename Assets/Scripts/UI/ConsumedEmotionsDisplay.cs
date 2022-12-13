@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-using DD.Core;
+using DD.Emotions;
 
 namespace DD.UI
 {

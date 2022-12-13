@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+using DD.Emotions;
+
 namespace DD.Core
 {
     public class DefeatManager : MonoBehaviour
@@ -14,12 +16,12 @@ namespace DD.Core
 
         void Awake()
         {
-            EmotionHandler.onEmotionsExhausted += HandleEmotionsExhausted;
+            EmotionSpawner.onEmotionsExhausted += HandleEmotionsExhausted;
         }
 
         void OnDisable()
         {
-            EmotionHandler.onEmotionsExhausted -= HandleEmotionsExhausted;
+            EmotionSpawner.onEmotionsExhausted -= HandleEmotionsExhausted;
         }
 
         void HandleEmotionsExhausted()

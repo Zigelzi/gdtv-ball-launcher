@@ -2,9 +2,9 @@
 using System.Collections;
 using UnityEngine;
 
-namespace DD.Core
+namespace DD.Emotions
 {
-    public class Emotion : MonoBehaviour, IDemolishable
+    public class Emotion : MonoBehaviour
     {
         [SerializeField] float _maxSpeed = 30f;
         [SerializeField] float _lifetime = 2f;

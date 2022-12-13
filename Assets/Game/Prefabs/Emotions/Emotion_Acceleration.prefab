@@ -53,7 +53,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2604559633959517946, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
       propertyPath: m_Name
-      value: Emotion_Neutral
+      value: Emotion_Acceleration
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 3522237701763630748, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+      propertyPath: m_Color.b
+      value: 0.079832695
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522237701763630748, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+      propertyPath: m_Color.g
+      value: 0.4797897
+      objectReference: {fileID: 0}
+    - target: {fileID: 3522237701763630748, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+      propertyPath: m_Color.r
+      value: 0.735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 6342753386453042729, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 497008041179484, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+--- !u!1 &3338241912997212137 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2604559633959517946, guid: 7f9b3b9921665c54f99b219f9ba9d236, type: 3}
+  m_PrefabInstance: {fileID: 753948752254767379}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1009467292512046335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3338241912997212137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4033ff8f0b04c2449eaa22fcadbcd01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 1
+  movementSpeed: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  flyingTreshold: 0.15
+  rotationSpeedTreshhold: 4

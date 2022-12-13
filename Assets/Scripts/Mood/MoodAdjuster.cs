@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-using DD.Core;
+using DD.Emotions;
 using DD.Environment;
 
 namespace DD.Mood
@@ -24,7 +24,6 @@ namespace DD.Mood
         void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            
         }
 
         void OnEnable()

@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Gyroscope = UnityEngine.InputSystem.Gyroscope;
 
-namespace DD.Core
+namespace DD.Emotions
 {
     public class Movement : MonoBehaviour
     {
@@ -67,6 +67,8 @@ namespace DD.Core
 
         bool IsRotatingFast()
         {
+            if (gyro == null) return false;
+
             float rotationSpeed = Mathf.Abs(gyro.angularVelocity.ReadValue().z);
             if (rotationSpeed >= rotationSpeedTreshhold)
             {
@@ -90,8 +92,8 @@ namespace DD.Core
         {
             if (gravitySensor == null) return;
 
-            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().x, 0);
-            _rb.AddForce(horizontalForce * movementSpeed, ForceMode2D.Impulse);
+            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().y, 0);
+            _rb.AddForce(-horizontalForce * movementSpeed, ForceMode2D.Impulse);
         }
 
         TDevice GetDevice<TDevice>(bool isRemote) where TDevice : InputDevice

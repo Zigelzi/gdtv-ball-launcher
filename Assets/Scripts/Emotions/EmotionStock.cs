@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace DD.Core
+namespace DD.Emotions
 {
     public class EmotionStock : MonoBehaviour
     {
