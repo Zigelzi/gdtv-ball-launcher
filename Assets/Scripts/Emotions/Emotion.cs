@@ -25,20 +25,8 @@ namespace DD.Emotions
 
         public void Demolish(GameObject source)
         {
-            StopCoroutine(DestroyAfterLifeTimeExpires());
             Destroy(gameObject);
             onEmotionDemolish?.Invoke(source);
-        }
-
-        public void StartLifetimeExpiry()
-        {
-            StartCoroutine(DestroyAfterLifeTimeExpires());
-        }
-
-        IEnumerator DestroyAfterLifeTimeExpires()
-        {
-            yield return new WaitForSeconds(_lifetime);
-            Demolish(gameObject);
         }
 
         void LimitVelocity()
