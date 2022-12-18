@@ -150,7 +150,7 @@ MonoBehaviour:
   _hitEmotions: 0
   _happyMoodGravity: 0.5
   _maxVelocity: 8
-  _happyMoodTreshhold: 3
+  _happyMoodTreshhold: 2
   onEmotionHit:
     m_PersistentCalls:
       m_Calls: []
