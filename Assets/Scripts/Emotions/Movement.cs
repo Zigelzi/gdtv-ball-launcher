@@ -92,8 +92,8 @@ namespace DD.Emotions
         {
             if (gravitySensor == null) return;
 
-            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().y, 0);
-            _rb.AddForce(-horizontalForce * movementSpeed, ForceMode2D.Impulse);
+            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().x, 0);
+            _rb.AddForce(horizontalForce * movementSpeed, ForceMode2D.Impulse);
         }
 
         TDevice GetDevice<TDevice>(bool isRemote) where TDevice : InputDevice
