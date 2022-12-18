@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _currentEmotion: {fileID: 0}
   _availableEmotions:
-  - {fileID: 5941212166333798202, guid: 061221b08b3ded04abccea236443925b, type: 3}
+  - {fileID: 6304892087831589215, guid: e441e9f30506e1543a909d5629e4bf20, type: 3}
   _selectedEmotion: {fileID: 0}
 --- !u!114 &2920514308272495111
 MonoBehaviour:

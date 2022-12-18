@@ -16,14 +16,10 @@ namespace DD.Emotions
         [SerializeField] List<Emotion> _availableEmotions = new List<Emotion>();
         [SerializeField] Emotion _selectedEmotion;
 
-        EmotionStock _emotionStock;
         MoodAdjuster _moodAdjuster;
-
-        public static Action onEmotionsExhausted;
 
         void Awake()
         {
-            _emotionStock = GetComponent<EmotionStock>();
             _moodAdjuster = FindObjectOfType<MoodAdjuster>();
             _selectedEmotion = _availableEmotions[0];
         }
@@ -120,14 +116,7 @@ namespace DD.Emotions
 
         void HandleEmotionDestroyed(GameObject emotion)
         {
-            if (_emotionStock.HasEmotionsRemaining())
-            {
-                RespawnEmotion(_selectedEmotion);
-            }
-            else
-            {
-                onEmotionsExhausted?.Invoke();
-            }
+            RespawnEmotion(_selectedEmotion);
         }
 
         void HandleHappyMood()
