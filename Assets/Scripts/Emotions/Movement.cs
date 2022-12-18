@@ -90,9 +90,21 @@ namespace DD.Emotions
 
         void Roll()
         {
+            Vector2 horizontalForce;
             if (gravitySensor == null) return;
 
-            Vector2 horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().x, 0);
+            // Unity Remote reads the sensor axises differently from the device
+            // Handle the difference in axises for testing purposes
+
+            if (Application.isEditor)
+            {
+                horizontalForce = new Vector2(-gravitySensor.gravity.ReadValue().y, 0);
+            }
+            else
+            {
+                horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().x, 0);
+            }
+            
             _rb.AddForce(horizontalForce * movementSpeed, ForceMode2D.Impulse);
         }
 

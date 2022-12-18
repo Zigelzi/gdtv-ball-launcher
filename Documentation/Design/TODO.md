@@ -24,6 +24,6 @@ List of issues that can be worked to deliver the desired player experience categ
    3. Wind that needs to be slowed down
    
 ## Design problems
-1. Levels with bouncing obstacles are too easy, because sometimes emotions are able to move too fast
-2. Unity remote and device gyro sensors use different axis
+- [ ] Levels with bouncing obstacles are too easy, because sometimes emotions are able to move too fast
+- [x] Unity remote and device gyro sensors use different axis
    1. Correct axis on device is X axis
