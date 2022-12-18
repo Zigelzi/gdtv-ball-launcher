@@ -180,7 +180,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 10
+  m_Mass: 8
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -201,7 +201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db3ce099da6392942b11ad2255c4d084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxSpeed: 8
 --- !u!114 &4298077076076817321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,10 +213,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4033ff8f0b04c2449eaa22fcadbcd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceStrength: 3.5
+  bounceStrength: 5
   movementSpeed: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   flyingTreshold: 0.15
   rotationSpeedTreshhold: 4
+  _maxHorizonalSpeed: 8
+  _maxUpwardSpeed: 10
+  _maxDownwardSpeed: 30

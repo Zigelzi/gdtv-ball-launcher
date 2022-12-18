@@ -13,6 +13,9 @@ namespace DD.Emotions
         [SerializeField] LayerMask groundLayer;
         [SerializeField] float flyingTreshold = .1f;
         [SerializeField] float rotationSpeedTreshhold = 1.5f;
+        [SerializeField] float _maxHorizonalSpeed = 8f;
+        [SerializeField] float _maxUpwardSpeed = 15f;
+        [SerializeField] float _maxDownwardSpeed = 30f;
 
         Rigidbody2D _rb;
         Gyroscope gyro;
@@ -39,6 +42,8 @@ namespace DD.Emotions
             EnableDeviceIfNeeded(gyro);
             EnableDeviceIfNeeded(gravitySensor);
 
+            LimitVelocity();
+
             if (!IsFlying() && IsRotatingFast())
             {
                 Bounce();
@@ -49,6 +54,13 @@ namespace DD.Emotions
         void FixedUpdate()
         {
             Roll();    
+        }
+
+        void LimitVelocity()
+        {
+            float clampedXVelocity = Mathf.Clamp(_rb.velocity.x, -_maxHorizonalSpeed, _maxHorizonalSpeed);
+            float clampedYVelocity = Mathf.Clamp(_rb.velocity.y, -_maxDownwardSpeed, _maxUpwardSpeed);
+            _rb.velocity = new Vector2(clampedXVelocity, clampedYVelocity);
         }
 
         bool IsFlying()
