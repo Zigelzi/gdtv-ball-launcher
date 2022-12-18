@@ -6,27 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Area10_Sandbox/Level99_Sandbox.unity
-    guid: 4b2aa24e27ac2be4f976f4b0d9ce513c
-  - enabled: 1
     path: Assets/Scenes/Area0_Menu/Level0_MainMenu.unity
     guid: 0f13d12ddf4ef4842a83dfef0ae0c3c4
   - enabled: 1
     path: Assets/Scenes/Area1_Home/Level1_Bed.unity
     guid: eff137cd611ab144ba81cce401d58ab0
   - enabled: 1
-    path: Assets/Scenes/Area1_Home/Level2_Kitchen.unity
-    guid: d8de8e0a5d90715448018a0713e84370
+    path: Assets/Scenes/Area1_Home/Level2_Living_Room.unity
+    guid: a2528713bd10f9b4a8b77ef68146a7e7
   - enabled: 1
-    path: Assets/Scenes/Area1_Home/Level3_Hallway.unity
-    guid: a7b13882e47e324498f6ba053cbd39f4
+    path: Assets/Scenes/Area1_Home/Level3_Kitchen.unity
+    guid: 2a77fe8b4b07a9e4e98bd2ea5c2b932d
   - enabled: 1
-    path: Assets/Scenes/Area1_Home/Level4_Corridor.unity
-    guid: a0b656501fa33054cb95be545bffacff
-  - enabled: 1
-    path: Assets/Scenes/Area1_Home/Level5_Elevator.unity
-    guid: e08094dea6460bf419c543ac0482e8f6
-  - enabled: 1
-    path: Assets/Scenes/Area2_Travel/Level6_Walkway.unity
-    guid: c6729fcbacdbaa549a458f82d59bb192
+    path: Assets/Scenes/Area1_Home/Level4_Bar_Table.unity
+    guid: 8ed8df4301417a946999a83b1922f9cc
   m_configObjects: {}

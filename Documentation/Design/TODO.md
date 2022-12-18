@@ -22,5 +22,6 @@ List of issues that can be worked to deliver the desired player experience categ
    1. Jump over obstacle
    2. Open a path to goal
    3. Wind that needs to be slowed down
-   4. 
-
+   
+## Design problems
+1. Levels with bouncing obstacles are too easy, because sometimes emotions are able to move too fast
