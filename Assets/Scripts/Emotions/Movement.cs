@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Gyroscope = UnityEngine.InputSystem.Gyroscope;
 
+using DD.Mood;
+
 namespace DD.Emotions
 {
     public class Movement : MonoBehaviour
@@ -18,29 +20,30 @@ namespace DD.Emotions
         [SerializeField] float _maxDownwardSpeed = 30f;
 
         Rigidbody2D _rb;
-        Gyroscope gyro;
-        GravitySensor gravitySensor;
+        Gyroscope _gyro;
+        GravitySensor _gravitySensor;
 
         void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
         }
 
+
         void Update()
         {
             if (Application.isEditor)
             {
-                gyro = GetDevice<Gyroscope>(true);
-                gravitySensor = GetDevice<GravitySensor>(true);
+                _gyro = GetDevice<Gyroscope>(true);
+                _gravitySensor = GetDevice<GravitySensor>(true);
             }
             else
             {
-                gyro = GetDevice<Gyroscope>(false);
-                gravitySensor = GetDevice<GravitySensor>(false);
+                _gyro = GetDevice<Gyroscope>(false);
+                _gravitySensor = GetDevice<GravitySensor>(false);
             }
             
-            EnableDeviceIfNeeded(gyro);
-            EnableDeviceIfNeeded(gravitySensor);
+            EnableDeviceIfNeeded(_gyro);
+            EnableDeviceIfNeeded(_gravitySensor);
 
             LimitVelocity();
 
@@ -79,9 +82,9 @@ namespace DD.Emotions
 
         bool IsRotatingFast()
         {
-            if (gyro == null) return false;
+            if (_gyro == null) return false;
 
-            float rotationSpeed = Mathf.Abs(gyro.angularVelocity.ReadValue().z);
+            float rotationSpeed = Mathf.Abs(_gyro.angularVelocity.ReadValue().z);
             if (rotationSpeed >= rotationSpeedTreshhold)
             {
                 return true;
@@ -92,9 +95,9 @@ namespace DD.Emotions
 
         void Bounce()
         {
-            if (gyro == null) return;
+            if (_gyro == null) return;
 
-            float upwardsForce = Mathf.Abs(gyro.angularVelocity.ReadValue().z) * bounceStrength;
+            float upwardsForce = Mathf.Abs(_gyro.angularVelocity.ReadValue().z) * bounceStrength;
             Vector2 acceleration = new Vector2(0, upwardsForce);
 
             _rb.AddForce(acceleration, ForceMode2D.Impulse);
@@ -103,18 +106,18 @@ namespace DD.Emotions
         void Roll()
         {
             Vector2 horizontalForce;
-            if (gravitySensor == null) return;
+            if (_gravitySensor == null) return;
 
             // Unity Remote reads the sensor axises differently from the device
             // Handle the difference in axises for testing purposes
 
             if (Application.isEditor)
             {
-                horizontalForce = new Vector2(-gravitySensor.gravity.ReadValue().y, 0);
+                horizontalForce = new Vector2(-_gravitySensor.gravity.ReadValue().y, 0);
             }
             else
             {
-                horizontalForce = new Vector2(gravitySensor.gravity.ReadValue().x, 0);
+                horizontalForce = new Vector2(_gravitySensor.gravity.ReadValue().x, 0);
             }
             
             _rb.AddForce(horizontalForce * movementSpeed, ForceMode2D.Impulse);

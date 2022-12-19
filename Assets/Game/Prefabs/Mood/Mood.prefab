@@ -151,6 +151,7 @@ MonoBehaviour:
   _happyMoodGravity: 0.5
   _maxVelocity: 8
   _happyMoodTreshhold: 2
+  _repressedEmotionsThreshold: -2
   onEmotionHit:
     m_PersistentCalls:
       m_Calls: []
@@ -158,6 +159,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   onHappyMood:
+    m_PersistentCalls:
+      m_Calls: []
+  onEmotionsRepressed:
     m_PersistentCalls:
       m_Calls: []
 --- !u!114 &3551264690846504434

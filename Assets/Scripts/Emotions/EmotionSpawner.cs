@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 
-using DD.Environment;
 using DD.Mood;
 
 namespace DD.Emotions
@@ -104,13 +103,18 @@ namespace DD.Emotions
         {
             int spawnedEmotionIndex;
 
-            if (_availableEmotions == null || _availableEmotions.Count == 0) return;
+            if (_availableEmotions == null || 
+                _availableEmotions.Count == 0) return;
 
-            spawnedEmotionIndex = _availableEmotions.IndexOf(emotion);
+            if (_moodAdjuster.HasEmotionsAvailable())
+            {
+                spawnedEmotionIndex = _availableEmotions.IndexOf(emotion);
 
-            _currentEmotion = Instantiate(_availableEmotions[spawnedEmotionIndex],
-                transform.position,
-                Quaternion.identity);
+                _currentEmotion = Instantiate(_availableEmotions[spawnedEmotionIndex],
+                    transform.position,
+                    Quaternion.identity);
+            }
+            
 
         }
 

@@ -13,13 +13,15 @@ namespace DD.Mood
         [SerializeField] int _hitEmotions = 0;
         [SerializeField] float _happyMoodGravity = 1.5f;
         [SerializeField] float _maxVelocity = 3f;
-        [SerializeField] int _happyMoodTreshhold = 3;
+        [SerializeField][Range(1, 5)] int _happyMoodTreshhold = 2;
+        [SerializeField][Range(-1, -5)] int _repressedEmotionsThreshold = -2;
         
         Rigidbody2D _rb;
 
         public UnityEvent onEmotionHit;
         public UnityEvent onEmotionMiss;
         public UnityEvent onHappyMood;
+        public UnityEvent onEmotionsRepressed;
 
         void Awake()
         {
@@ -29,11 +31,6 @@ namespace DD.Mood
         void OnEnable()
         {
             Emotion.onEmotionDemolish += HandleEmotionDemolished;    
-        }
-
-        void Update()
-        {
-            TriggerHappyMood();
         }
 
         void OnDisable()
@@ -49,15 +46,15 @@ namespace DD.Mood
             }    
         }
 
-        void TriggerHappyMood()
+        public bool HasEmotionsAvailable()
         {
-            if (_hitEmotions >= _happyMoodTreshhold)
+            if (_hitEmotions >= _repressedEmotionsThreshold && 
+                _hitEmotions <= _happyMoodTreshhold)
             {
-                _rb.gravityScale = -_happyMoodGravity;
-                _rb.velocity = new Vector2(0, Mathf.Clamp(_rb.velocity.y, -_maxVelocity, _maxVelocity));
-                StartCoroutine(StartHappyMood());
+                return true;
             }
-            
+
+            return false;
         }
 
         IEnumerator StartHappyMood()
@@ -78,13 +75,33 @@ namespace DD.Mood
             {
                 _hitEmotions++;
                 onEmotionHit?.Invoke();
+                CheckHappyMood();
             }
             if (source.TryGetComponent<Boundary>(out Boundary boundary))
             {
                 _hitEmotions--;
                 onEmotionMiss?.Invoke();
+                CheckRepressedEmotions();
             }
             
+        }
+
+        void CheckHappyMood()
+        {
+            if (_hitEmotions >= _happyMoodTreshhold)
+            {
+                _rb.gravityScale = -_happyMoodGravity;
+                _rb.velocity = new Vector2(0, Mathf.Clamp(_rb.velocity.y, -_maxVelocity, _maxVelocity));
+                StartCoroutine(StartHappyMood());
+            }
+
+        }
+
+        void CheckRepressedEmotions()
+        {
+            if (_hitEmotions <= _repressedEmotionsThreshold) {
+                onEmotionsRepressed?.Invoke();
+            }
         }
     }
 }
