@@ -1238,7 +1238,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4343533635678542913, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_text
-      value: The emotional burden has gotten overwhelming...
+      value: Few too many emotions got repressed in the process.
       objectReference: {fileID: 0}
     - target: {fileID: 4392456805415407891, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
@@ -1250,7 +1250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621756966873936833, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_text
-      value: Emotions have taken over
+      value: A bit better
       objectReference: {fileID: 0}
     - target: {fileID: 6392253920774241910, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
@@ -1575,6 +1575,10 @@ PrefabInstance:
     - target: {fileID: 4678419466938759559, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
       value: Panel_Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621756966873936833, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
+      propertyPath: m_text
+      value: Feeling great!
       objectReference: {fileID: 0}
     - target: {fileID: 6392253920774241910, guid: 49f58b792123a07439ca2e6c65dc0aa2, type: 3}
       propertyPath: m_Name
