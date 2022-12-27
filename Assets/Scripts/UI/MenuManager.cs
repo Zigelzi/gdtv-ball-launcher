@@ -29,16 +29,23 @@ namespace DD.UI
         void OnEnable()
         {
             _moodAdjuster.onHappyMood.AddListener(HandleVictory);
+            _moodAdjuster.onEmotionsRepressed.AddListener(HandleDefeat);
         }
 
         void OnDisable()
         {
             _moodAdjuster.onHappyMood.RemoveListener(HandleVictory);
+            _moodAdjuster.onEmotionsRepressed.RemoveListener(HandleDefeat);
         }
 
         void HandleVictory()
         {
             _victoryCanvas.enabled = true;
+        }
+
+        void HandleDefeat()
+        {
+            _defeatedCanvas.enabled = true;
         }
 
     }

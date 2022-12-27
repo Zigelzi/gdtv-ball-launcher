@@ -46,59 +46,6 @@ namespace DD.Emotions
             _moodAdjuster.onHappyMood.RemoveListener(HandleHappyMood);
         }
 
-        public void NextEmotion()
-        {
-            int currentEmotionIndex = _availableEmotions.IndexOf(_selectedEmotion);
-            int nextEmotionIndex = currentEmotionIndex + 1;
-            if (nextEmotionIndex >= _availableEmotions.Count)
-            {
-                _selectedEmotion = _availableEmotions[0];
-            }
-            else
-            {
-                _selectedEmotion = _availableEmotions[nextEmotionIndex];
-            }
-
-            SwapEmotion(_selectedEmotion);
-        }
-
-        public void PreviousEmotion()
-        {
-            int currentEmotionIndex = _availableEmotions.IndexOf(_selectedEmotion);
-            int previousEmotionIndex = currentEmotionIndex - 1;
-            if (previousEmotionIndex < 0)
-            {
-                _selectedEmotion = _availableEmotions[_availableEmotions.Count - 1];
-            }
-            else
-            {
-                _selectedEmotion = _availableEmotions[previousEmotionIndex];
-            }
-
-            SwapEmotion(_selectedEmotion);
-        }
-
-        void SwapEmotion(Emotion newEmotion)
-        {
-            if (_availableEmotions == null || 
-                _availableEmotions.Count == 0 ||
-                _currentEmotion == null) return;
-
-            Destroy(_currentEmotion.gameObject);
-            RespawnEmotion(newEmotion);
-        }
-
-        bool IsTouchingUI()
-        {
-            if (Touchscreen.current.primaryTouch.press.isPressed && 
-                EventSystem.current.IsPointerOverGameObject())
-            {
-                return true;
-            }
-
-            return false;
-        }
-
         void RespawnEmotion(Emotion emotion)
         {
             int spawnedEmotionIndex;

@@ -48,7 +48,7 @@ namespace DD.Mood
 
         public bool HasEmotionsAvailable()
         {
-            if (_hitEmotions >= _repressedEmotionsThreshold && 
+            if (_hitEmotions > _repressedEmotionsThreshold && 
                 _hitEmotions <= _happyMoodTreshhold)
             {
                 return true;
