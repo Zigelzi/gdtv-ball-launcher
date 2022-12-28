@@ -1,0 +1,33 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+namespace DD.Environment
+{
+    public class Door : MonoBehaviour
+    {
+        [SerializeField] Transform _targetPosition;
+        [SerializeField] float _openingSpeed = 1f;
+
+        Vector2 _startingPosition;
+        void Awake()
+        {
+            _startingPosition = transform.position;
+        }
+
+        public void Open()
+        {
+            StartCoroutine(MoveDoorToTargetPosition());
+        }
+
+        IEnumerator MoveDoorToTargetPosition()
+        {
+            while (Vector2.Distance(_targetPosition.position, transform.position) > 0.1f)
+            {
+                float step = _openingSpeed * Time.deltaTime;
+                transform.position = Vector2.MoveTowards(transform.position, _targetPosition.position, step);
+                yield return new WaitForEndOfFrame();
+            }
+        }
+    }
+}
