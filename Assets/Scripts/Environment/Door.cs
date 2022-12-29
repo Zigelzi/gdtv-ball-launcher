@@ -27,17 +27,19 @@ namespace DD.Environment
 
         IEnumerator OpenAndCloseDoor()
         {
-            float step = _openingSpeed * Time.deltaTime;
+            float step;
 
             _isMoving = true;
 
             while (Vector2.Distance(_targetPosition.position, transform.position) > 0.1f)
             {
+                step = _openingSpeed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, _targetPosition.position, step);
                 yield return new WaitForEndOfFrame();
             }
             while (Vector2.Distance(_startingPosition, transform.position) > 0.1f)
             {
+                step = _openingSpeed * Time.deltaTime;
                 transform.position = Vector2.MoveTowards(transform.position, _startingPosition, step);
                 yield return new WaitForEndOfFrame();
             }
