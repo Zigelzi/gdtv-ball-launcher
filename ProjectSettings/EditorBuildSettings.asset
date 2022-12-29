@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Area1_Home/Level6_Stairs.unity
     guid: 830c56bba73037444808b4f3fd28d814
+  - enabled: 1
+    path: Assets/Scenes/Area1_Home/Level7_Elevator.unity
+    guid: ac4f294a474fdc340bb14d65c70856ee
   m_configObjects: {}
