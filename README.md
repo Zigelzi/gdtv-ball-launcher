@@ -69,7 +69,7 @@ Primary audience is persons who haven't played much games, have mobile phone ava
 
 Player can...
 1. Move the emotions by moving their phone
-2. Reset the level
+2. Jump by quickly tilting the phone
 
 ### World
 
