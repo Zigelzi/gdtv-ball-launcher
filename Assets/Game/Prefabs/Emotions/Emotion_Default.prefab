@@ -213,13 +213,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4033ff8f0b04c2449eaa22fcadbcd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceStrength: 8
+  bounceStrength: 60
   movementSpeed: 3
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
   flyingTreshold: 0.15
-  rotationSpeedTreshhold: 4
+  _verticalAccelerationThreshold: 0.3
   _maxHorizonalSpeed: 8
   _maxUpwardSpeed: 10
   _maxDownwardSpeed: 30

@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Gyroscope = UnityEngine.InputSystem.Gyroscope;
-
-using DD.Mood;
 
 namespace DD.Emotions
 {
@@ -14,14 +11,14 @@ namespace DD.Emotions
         [SerializeField] float movementSpeed = 2f;
         [SerializeField] LayerMask groundLayer;
         [SerializeField] float flyingTreshold = .1f;
-        [SerializeField] float rotationSpeedTreshhold = 1.5f;
+        [SerializeField] float _verticalAccelerationThreshold = .15f;
         [SerializeField] float _maxHorizonalSpeed = 8f;
         [SerializeField] float _maxUpwardSpeed = 15f;
         [SerializeField] float _maxDownwardSpeed = 30f;
 
         Rigidbody2D _rb;
-        Gyroscope _gyro;
         GravitySensor _gravitySensor;
+        LinearAccelerationSensor _linearAccelerationSensor;
 
         void Awake()
         {
@@ -33,25 +30,25 @@ namespace DD.Emotions
         {
             if (Application.isEditor)
             {
-                _gyro = GetDevice<Gyroscope>(true);
                 _gravitySensor = GetDevice<GravitySensor>(true);
+                _linearAccelerationSensor = GetDevice<LinearAccelerationSensor>(true);
             }
             else
             {
-                _gyro = GetDevice<Gyroscope>(false);
                 _gravitySensor = GetDevice<GravitySensor>(false);
+                _linearAccelerationSensor = GetDevice<LinearAccelerationSensor>(false);
             }
-            
-            EnableDeviceIfNeeded(_gyro);
+
             EnableDeviceIfNeeded(_gravitySensor);
+            EnableDeviceIfNeeded(_linearAccelerationSensor);
 
             LimitVelocity();
 
-            if (!IsFlying() && IsRotatingFast())
+            if (!IsFlying() && IsMovingFastVertically())
             {
                 Bounce();
             }
-            
+
         }
 
         void FixedUpdate()
@@ -80,12 +77,13 @@ namespace DD.Emotions
             return false;
         }
 
-        bool IsRotatingFast()
+        bool IsMovingFastVertically()
         {
-            if (_gyro == null) return false;
+            if (_linearAccelerationSensor == null) return false;
 
-            float rotationSpeed = Mathf.Abs(_gyro.angularVelocity.ReadValue().z);
-            if (rotationSpeed >= rotationSpeedTreshhold)
+            float verticalAcceleration = Mathf.Abs(_linearAccelerationSensor.acceleration.ReadValue().x);
+            
+            if (verticalAcceleration >= _verticalAccelerationThreshold)
             {
                 return true;
             }
@@ -95,12 +93,19 @@ namespace DD.Emotions
 
         void Bounce()
         {
-            if (_gyro == null) return;
+            if (_linearAccelerationSensor == null) return;
 
-            float upwardsForce = Mathf.Abs(_gyro.angularVelocity.ReadValue().z) * bounceStrength;
-            Vector2 acceleration = new Vector2(0, upwardsForce);
+            float verticalAcceleration = -_linearAccelerationSensor.acceleration.ReadValue().x;
 
-            _rb.AddForce(acceleration, ForceMode2D.Impulse);
+            if (verticalAcceleration > 0)
+            {
+                float acceleration = verticalAcceleration * bounceStrength;
+                Vector2 upwardsForce = new Vector2(0, acceleration);
+
+                _rb.AddForce(upwardsForce, ForceMode2D.Impulse);
+            }
+
+            
         }
 
         void Roll()
