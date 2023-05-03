@@ -183,7 +183,7 @@ Rigidbody2D:
   m_Mass: 5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 0426d57528b84fb459793e490298fd97, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4033ff8f0b04c2449eaa22fcadbcd01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounceStrength: 60
+  bounceStrength: 40
   movementSpeed: 3
   groundLayer:
     serializedVersion: 2
@@ -221,5 +221,5 @@ MonoBehaviour:
   flyingTreshold: 0.15
   _verticalAccelerationThreshold: 0.3
   _maxHorizonalSpeed: 8
-  _maxUpwardSpeed: 10
+  _maxUpwardSpeed: 15
   _maxDownwardSpeed: 30
